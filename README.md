@@ -1,5 +1,6 @@
 Aero prueba
 ====
+Instalar NodeJs
 
 Instalar ruby y rails con el siguiente comando
 

@@ -1,4 +1,4 @@
-Aero
+Aero prueba
 ====
 
 Instalar ruby y rails con el siguiente comando

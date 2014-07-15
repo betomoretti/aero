@@ -1,0 +1,2 @@
+module UniqueHelper
+end

@@ -1,12 +1,34 @@
 Rails.application.routes.draw do
+  get 'unique_zones/index'
+
+  get 'unique_zones/new'
+
+  get 'unique_zones/edit'
+
+  get 'unique_zones/create'
+
+  get 'unique_zones/update'
+
+  get 'unique_zones/destroy'
+
+  root :to => 'unique#index'
+
+  get 'unique/index'
+
+  get 'unique/info'
+
+  get 'unique/contact'
+
+  get 'unique/destinations'
+
+  get 'unique/show'
+
+  get 'unique/send_contact_mail'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root :to => 'first#hello'
-
-  # Example of regular route:
-  get 'first/hello'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

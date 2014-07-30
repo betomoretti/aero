@@ -1,9 +1,5 @@
 class UniqueController < ApplicationController
 
-  layout "unique"
-  def index
-  end
-
   def info
   end
 

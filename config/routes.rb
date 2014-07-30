@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'unique_zones/destroy'
 
-  root :to => 'unique#index'
+  root :to => 'application#index'
 
   get 'unique/index'
 

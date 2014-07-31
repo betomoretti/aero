@@ -9,7 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Unique :: un producto de Aero</title>
     <%= stylesheet_link_tag    'application', 'easydropdown.flat', 'responsive','styles', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'minified/jquery-1.9.1.min','minified/jquery.easydropdown.min','minified/jquery.backstretch.min', 'data-turbolinks-track' => true %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <%= javascript_include_tag 'application', 'minified/jquery-1.11.0.min','minified/jquery.easydropdown.min','minified/jquery.backstretch.min', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 <body>
@@ -17,7 +21,6 @@
 <%= yield %>
 
 </body>
-<!-- <script type="text/javascript" src="js/minified/jquery.backstretch.min.js"></script> -->
 
 
 </html>

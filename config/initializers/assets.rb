@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w( styles.css )
 Rails.application.config.assets.precompile += %w( minified/jquery-1.9.1.min.js )
 Rails.application.config.assets.precompile += %w( minified/jquery.easydropdown.min.js )
 Rails.application.config.assets.precompile += %w( minified/jquery.backstretch.min.js )
+Rails.application.config.assets.precompile += %w( minified/jquery-1.11.0.min.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )

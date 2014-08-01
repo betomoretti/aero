@@ -1,0 +1,41 @@
+<header class="head-home">
+    <div class="logo-home"></div>
+    <h1>VIAJES ÚNICOS. EXPERIENCIAS ÚNICAS</h1>
+</header>
+
+<div id="searchBar" class="homeSearchBar">
+    <div class="inner-wrapper">
+        <form id="searchForm">
+            <input name="strSearch" type="text" class="inptsearch">
+            <select name="circuit" class="dropdown">
+              <option value="0">circuitos</option>
+              <option value="1">circuitos 1</option>
+              <option value="2">circuitos 2</option>
+              <option value="3">circuitos 3</option>
+              <option value="4">circuitos 4</option>
+              <option value="5">circuitos 5</option>
+              <option value="6">circuitos 6</option>
+            </select>
+            <input name="searchBtn" type="button" value="BUSCAR" class="searchBtn">
+        </form>
+    </div>
+</div>
+
+<footer>
+  <div class="inner-wrapper">
+    <div class="byAero"></div>
+
+      <div class="buttons">
+        <a href>Qué es Unique?</a><span>|</span><a href>Consultanos</a><span>|</span><a href>Información por destinos</a>
+      </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+   $.backstretch([
+      "<%= asset_path 'home_01.jpg' %>"
+    , "<%= asset_path 'home_02.jpg' %>"
+    , "<%= asset_path 'home_03.jpg' %>"
+  , "<%= asset_path 'home_04.jpg' %>"
+  ], {duration: 3000, fade: 750});
+</script>

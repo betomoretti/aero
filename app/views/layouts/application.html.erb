@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Aero</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="es">
+  <!--<![endif]-->
+  <head>
+    <meta charset='utf-8'/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Unique :: un producto de Aero</title>
+    <%= stylesheet_link_tag    'application', 'easydropdown.flat', 'responsive','styles', media: 'all', 'data-turbolinks-track' => true %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <%= javascript_include_tag 'application', 'minified/jquery-1.11.0.min','minified/jquery.easydropdown.min','minified/jquery.backstretch.min', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 <body>
 
 <%= yield %>
 
 </body>
+
+
 </html>

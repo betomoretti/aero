@@ -1,0 +1,255 @@
+/* --- EASYDROPDOWN FLAT THEME by Jan Cantor --- */
+
+/* PREFIXED CSS */
+
+.dropdown,
+.dropdown div,
+.dropdown li,
+.dropdown div::after,
+.dropdown .carat,
+.dropdown .carat:after,
+.dropdown .selected::after,
+.dropdown:after{
+	-webkit-transition: all 150ms ease-in-out;
+	-moz-transition: all 150ms ease-in-out;
+	-ms-transition: all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
+}
+
+.dropdown .selected::after,
+.dropdown.scrollable div::after{
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	-ms-pointer-events: none;
+	pointer-events: none;
+}
+
+/* WRAPPER */
+
+.dropdown{
+	text-align:left;
+	position: relative;
+	top:9px;
+	/*width:100%;*/
+	width:260px;
+	min-width: 180px;
+	cursor: pointer;
+	font-weight: 300;
+	background:none;
+	border:1px solid white;
+	height:32px;
+	color:white;
+
+	padding: 4px 0px 4px;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	display:inline-block;
+	background-image:asset-data-url("dropdownArrowBG.gif");
+	background-repeat:repeat-y;
+	background-position:right top;
+}
+
+.dropdown.open{
+	z-index: 2;
+}
+
+.dropdown:hover,
+.dropdown.focus{
+	/*background: #A20C10;*/
+}
+
+/* CARAT */
+
+.dropdown .carat,
+.dropdown .carat:after{
+	position: absolute;
+	right: 1px;
+	top: 50%;
+	margin-top: -3px;
+	/*border: 6px solid transparent;
+	border-top: 6px solid #FFF;*/
+	width:15px;
+	height:9px;
+	z-index: 1;
+
+	background-image:asset-data-url("dropdownArrow.gif");
+
+	background-repeat:no-repeat;
+
+
+	-webkit-transform-origin: 50% 20%;
+	-moz-transform-origin: 50% 20%;
+	-ms-transform-origin: 50% 20%;
+	transform-origin: 50% 20%;
+
+}
+
+.dropdown:hover .carat:after{
+	/*border-top-color: #f4f4f4;*/
+}
+
+.dropdown.focus .carat{
+	/*border-top-color: #f8f8f8;*/
+}
+
+.dropdown.focus .carat:after{
+	/*border-top-color: #0180d1;*/
+}
+
+.dropdown.open .carat{
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/* OLD SELECT (HIDDEN) */
+
+.dropdown .old{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.dropdown select{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.dropdown.touch select{
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+/* SELECTED FEEDBACK ITEM */
+.dropdown .selected {
+    color: #FFF;
+}
+
+.dropdown .selected,
+.dropdown li{
+	display: block;
+	font-size: 17px;
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 1;
+	padding: 4px 12px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.dropdown .selected::after{
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+}
+
+.dropdown:hover .selected::after,
+.dropdown.focus .selected::after{
+	/*box-shadow: inset -55px 0 25px -20px #A20C10;*/
+}
+
+/* DROP DOWN WRAPPER */
+
+.dropdown div{
+	position: absolute;
+	height: 0;
+	left: 0;
+	right: 0;
+	top: 100%;
+	margin-top: 1px;
+	background: none;
+	overflow: hidden;
+	opacity: 0;
+	color: #000;
+		z-index:999999;
+}
+
+.dropdown:hover div{
+
+}
+
+/* Height is adjusted by JS on open */
+
+.dropdown.open div{
+	opacity: 1;
+	z-index: 2;
+}
+
+/* FADE OVERLAY FOR SCROLLING LISTS */
+
+.dropdown.scrollable div::after{
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 40px;
+
+	/*box-shadow: inset 0 -50px 30px -35px #A20C10;*/
+}
+
+.dropdown.scrollable:hover div::after{
+	/*box-shadow: inset 0 -50px 30px -35px #A20C10;*/
+}
+
+.dropdown.scrollable.bottom div::after{
+	opacity: 0;
+}
+
+/* DROP DOWN LIST */
+
+.dropdown ul{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	list-style: none;
+	overflow: hidden;
+	z-index:999999;
+	background:rgba(0,0,0,.8);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#cc000000',GradientType=0 ); /* IE6-9 */
+	color: #fff;
+}
+
+.dropdown.scrollable.open ul{
+	overflow-y: auto;
+}
+
+/* DROP DOWN LIST ITEMS */
+
+.dropdown li{
+	list-style: none;
+	padding: 10px 12px;
+}
+
+.dropdown li:last-child {
+    border-bottom: 0;
+}
+
+/* .focus class is also added on hover */
+
+.dropdown li.focus{
+	background: #fff;
+	position: relative;
+	z-index: 3;
+	color: #000;
+}
+
+.dropdown li.active{
+	background: #fff;
+	color: #000;
+}

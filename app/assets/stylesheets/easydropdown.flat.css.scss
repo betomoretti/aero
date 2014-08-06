@@ -29,7 +29,7 @@
 .dropdown{
 	text-align:left;
 	position: relative;
-	top:9px;
+	//top:9px;
 	/*width:100%;*/
 	width:260px;
 	min-width: 180px;
@@ -46,7 +46,7 @@
 	-moz-user-select: none;
 	user-select: none;
 	display:inline-block;
-	background-image:asset-data-url("dropdownArrowBG.gif");
+	background-image:image-path("/app/assets/images/dropdownArrowBG.gif");
 	background-repeat:repeat-y;
 	background-position:right top;
 }

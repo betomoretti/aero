@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+ 
+//= require minified/jquery-1.11.0.min
+//= require minified/jquery.easydropdown.min
+//= require minified/jquery.backstretch.min

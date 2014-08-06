@@ -6,11 +6,11 @@
 @font-face {
     font-family: 'PillGothic';
 
-	src: asset-data-url('/assets/pillgothic300mg-regular-webfont.eot');
-    src: asset-data-url('/assets/pillgothic300mg-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-data-url('/assets/pillgothic300mg-regular-webfont.woff') format('woff'),
-         asset-data-url('/assets/pillgothic300mg-regular-webfont.ttf') format('truetype'),
-         asset-data-url('/assets/pillgothic300mg-regular-webfont.svg#pill_gothic_300mgregular') format('svg');
+	src: font-url('/app/assets/fonts/pillgothic300mg-regular-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-regular-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-regular-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-regular-webfont.svg#pill_gothic_300mgregular') format('svg');
     font-weight: normal;
     font-style:normal;
 }
@@ -18,11 +18,11 @@
 @font-face {
     font-family: 'PillGothic';
 
-	src: asset-data-url('/assets/pillgothic300mg-oblique-webfont.eot');
-    src: asset-data-url('/assets/pillgothic300mg-oblique-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-data-url('/assets/pillgothic300mg-oblique-webfont.woff') format('woff'),
-         asset-data-url('/assets/pillgothic300mg-oblique-webfont.ttf') format('truetype'),
-         asset-data-url('/assets/pillgothic300mg-oblique-webfont.svg#pill_gothic_300mgoblique') format('svg');
+	src: font-url('/assets/pillgothic300mg-oblique-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-oblique-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-oblique-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-oblique-webfont.svg#pill_gothic_300mgoblique') format('svg');
     font-weight: normal;
     font-style: italic;
 }
@@ -30,22 +30,22 @@
 @font-face {
     font-family: 'PillGothic';
 
-	src: asset-data-url('/assets/pillgothic300mg-bold-webfont.eot');
-    src: asset-data-url('/assets/pillgothic300mg-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-data-url('/assets/pillgothic300mg-bold-webfont.woff') format('woff'),
-         asset-data-url('/assets/pillgothic300mg-bold-webfont.ttf') format('truetype'),
-         asset-data-url('/assets/pillgothic300mg-bold-webfont.svg#pill_gothic_300mgbold') format('svg');
+	src: font-url('/assets/pillgothic300mg-bold-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-bold-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-bold-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-bold-webfont.svg#pill_gothic_300mgbold') format('svg');
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: 'PillGothic';
 
-	src: asset-data-url('/assets/pillgothic300mg-light-webfont.eot');
-    src: asset-data-url('/assets/pillgothic300mg-light-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-data-url('/assets/pillgothic300mg-light-webfont.woff') format('woff'),
-         asset-data-url('/assets/pillgothic300mg-light-webfont.ttf') format('truetype'),
-         asset-data-url('/assets/pillgothic300mg-light-webfont.svg#pill_gothic_300mglight') format('svg');
+	src: font-url('/assets/pillgothic300mg-light-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-light-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-light-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-light-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-light-webfont.svg#pill_gothic_300mglight') format('svg');
     font-weight:light;
     font-style: normal;
 }
@@ -53,11 +53,11 @@
 @font-face {
     font-family: 'PillGothic';
 
-	src: asset-data-url('/assets/pillgothic300mg-thin-webfont.eot');
-    src: asset-data-url('/assets/pillgothic300mg-thin-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-data-url("/assets/pillgothic300mg-thin-webfont.woff") format('woff'),
-         asset-data-url('/assets/pillgothic300mg-thin-webfont.ttf') format('truetype'),
-         asset-data-url('/assets/pillgothic300mg-thin-webfont.svg#pill_gothic_300mgthin') format('svg');
+	src: font-url('/assets/pillgothic300mg-thin-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url("/assets/pillgothic300mg-thin-webfont.woff") format('woff'),
+         font-url('/assets/pillgothic300mg-thin-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-thin-webfont.svg#pill_gothic_300mgthin') format('svg');
     font-weight:100;
     font-style: normal;
 }
@@ -165,7 +165,7 @@ header.head-home
 		margin:0 auto 80px auto;
 		width:180px;
 		height:229px;
-		bakcground:#000;
+		background:#000;
 		background-image:url("/assets/logo-unique.gif");
 		background-repeat:no-repeat;
 		background-position:center top;
@@ -235,11 +235,12 @@ input
 input.inptsearch
 {
 	width:400px;
-	background-image:asset-data-url("/assets/search-icon.png");
+	background-image:url("/assets/search-icon.png");
 	background-repeat:no-repeat;
 	background-position:4px 4px;
 	padding-left:34px;
 	margin-right:60px;
+	margin-left:170px;
 }
 input:focus, *:focus
 {

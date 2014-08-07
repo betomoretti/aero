@@ -13,7 +13,8 @@ default: &default
 
 development:
   <<: *default
-  database: colo_Aero
+  database: aero_dev
+  # database: coloAero
 
 
 # Warning: The database defined as "test" will be erased and
@@ -25,4 +26,4 @@ test:
 
 production:
   <<: *default
-  database: colo_Aero
+  database: aero_prod

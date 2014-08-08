@@ -1,5 +1,11 @@
 class UniqueController < ApplicationController
 
+  layout 'unique'
+  
+  def index
+    render :layout => 'application'  
+  end
+
   def info
   end
 

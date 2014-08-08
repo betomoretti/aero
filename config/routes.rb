@@ -1,29 +1,20 @@
 Rails.application.routes.draw do
-  get 'unique_zones/index'
 
-  get 'unique_zones/new'
+  root :to => 'unique#index'
 
-  get 'unique_zones/edit'
+  get ':controller/:action'
 
-  get 'unique_zones/create'
+  # get 'unique/index'
 
-  get 'unique_zones/update'
+  # get 'unique/info'
 
-  get 'unique_zones/destroy'
+  # get 'unique/contact'
 
-  root :to => 'application#index'
+  # get 'unique/destinations'
 
-  get 'unique/index'
+  # get 'unique/show'
 
-  get 'unique/info'
-
-  get 'unique/contact'
-
-  get 'unique/destinations'
-
-  get 'unique/show'
-
-  get 'unique/send_contact_mail'
+  # get 'unique/send_contact_mail'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

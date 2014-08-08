@@ -13,8 +13,8 @@ default: &default
 
 development:
   <<: *default
-  database: aero_dev
-  # database: coloAero
+  # database: aero_dev
+  database: colo_Aero
 
 
 # Warning: The database defined as "test" will be erased and

@@ -15,6 +15,15 @@ class UniqueController < ApplicationController
   def destinations
   end
 
+  def search
+    if params[:search]
+      @programs = Program.search(params[:search])
+      # @programs = Program.search(params[:search]).order("created_at DESC")
+    else
+      @programs = Program.uniques
+    end
+  end
+
   def show
   end
 

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get ':controller/:action'
 
+  get 'search', to: 'unique#search'
+
   # get 'unique/index'
 
   # get 'unique/info'

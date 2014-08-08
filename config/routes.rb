@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   # get 'unique/info'
 
-  # get 'unique/contact'
-
   # get 'unique/destinations'
 
   # get 'unique/show'

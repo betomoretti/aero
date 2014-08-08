@@ -240,8 +240,14 @@ input.inptsearch
 	background-position:4px 4px;
 	padding-left:34px;
 	margin-right:60px;
+}
+
+input.inptsearch-home
+{
+	@extend .inptsearch;
 	margin-left:170px;
 }
+
 input:focus, *:focus
 {
 	outline:none;
@@ -279,7 +285,7 @@ footer
 
 footer div.byAero
 {
-	background-image:asset-data-url("footer-prod-aero.png");
+	background-image:url("/assets/footer-prod-aero.png");
 	background-repeat:no-repeat;
 	background-position:left center;
 	height:44px;
@@ -331,25 +337,25 @@ header.head
 
 }
 
-	header.bimg-01 { background-image:url(../images/cabeza_01.jpg); }
+	header.bimg-01 { background-image:url('/assets/cabeza_01.jpg'); }
 
-	header.bimg-02 { background-image:url(../images/cabeza_02.jpg); }
+	header.bimg-02 { background-image:url('/assets/cabeza_02.jpg'); }
 
-	header.bimg-03 { background-image:url(../images/cabeza_03.jpg); }
+	header.bimg-03 { background-image:url('/assets/cabeza_03.jpg'); }
 
-	header.bimg-04 { background-image:url(../images/cabeza_04.jpg); }
+	header.bimg-04 { background-image:url('/assets/cabeza_04.jpg'); }
 
-	header.bimg-05 { background-image:url(../images/cabeza_05.jpg); }
+	header.bimg-05 { background-image:url('/assets/cabeza_05.jpg'); }
 
-	header.bimg-06 { background-image:url(../images/cabeza_06.jpg); }
+	header.bimg-06 { background-image:url('/assets/cabeza_06.jpg'); }
 
-	header.bimg-07 { background-image:url(../images/cabeza_07.jpg); }
+	header.bimg-07 { background-image:url('/assets/cabeza_07.jpg'); }
 
-	header.bimg-08 { background-image:url(../images/cabeza_08.jpg); }
+	header.bimg-08 { background-image:url('/assets/cabeza_08.jpg'); }
 
-	header.bimg-09 { background-image:url(../images/cabeza_09.jpg); }
+	header.bimg-09 { background-image:url('/assets/cabeza_09.jpg'); }
 
-	header.bimg-10 { background-image:url(../images/cabeza_10.jpg); }
+	header.bimg-10 { background-image:url('/assets/cabeza_10.jpg'); }
 
 
 
@@ -359,7 +365,7 @@ header.head
 	width:140px;
 	height:170px;
 	background-color:#000;
-	background-image:url(../images/logo-unique-inner.gif);
+	background-image:url('/assets/logo-unique-inner.gif');
 	background-repeat:no-repeat;
 	background-position:left top;
 	float:left;
@@ -554,7 +560,7 @@ div.dwnldItem
 	div.dwnldItem .over
 	{
 		position:absolute;
-		background-image:url(../images/download-icon.png);
+		background-image:url('/assets/download-icon.png');
 		background-repeat:no-repeat;
 		background-position:left center;
 		width:46px;

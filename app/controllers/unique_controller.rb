@@ -16,11 +16,12 @@ class UniqueController < ApplicationController
   end
 
   def search
-    if params[:search]
-      @programs = Program.search(params[:search])
-      # @programs = Program.search(params[:search]).order("created_at DESC")
+    if params[:word]
+      @uniques = Program.search_uniques(params[:word])
+      @word = params[:word]
     else
-      @programs = Program.uniques
+      @uniques = Program.uniques
+      @word = "Todos"
     end
   end
 

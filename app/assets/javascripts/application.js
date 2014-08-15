@@ -20,3 +20,4 @@
 //= require minified/jquery.easydropdown.min
 //= require minified/jquery.backstretch.min
 //= require minified/jquery.mCustomScrollbar.min
+//= require minified/jquery.easytabs.min

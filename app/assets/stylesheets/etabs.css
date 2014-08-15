@@ -21,7 +21,7 @@
 	
 	width:12px;
 	height:30px;
-	background:url(../images/fake-tab-border.gif);
+	background:url("/assets/fake-tab-border.gif");
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	display:none;

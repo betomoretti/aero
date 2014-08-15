@@ -26,6 +26,12 @@ class UniqueController < ApplicationController
   end
 
   def show
+    if params[:id]
+      @program = Program.find(params[:id])
+      render :layout => 'unique_show'
+    else
+      redirect_to controller: "unique", action: "index"
+    end 
   end
 
   def send_contact_mail

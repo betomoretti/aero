@@ -32,7 +32,7 @@
                     <!-- <img src="images/iDst_thumb_example.jpg" class="inCol"/> -->
                     <div class="details">
                         <%= raw unique.summary %>
-                        <input type="button" value="+info" class="infoBtn"/>
+                        <a href=<%= url_for :controller => "unique",:action => "show", :id => unique.id %>><input type="button" value="+info" class="infoBtn"/></a>
                     </div>
                 </div>
                 <img src="images/iDst_thumb_example.jpg"  class="outCol"/>

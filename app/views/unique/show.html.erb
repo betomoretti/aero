@@ -1,2 +1,56 @@
-<h1>Unique#show</h1>
-<p>Find me in app/views/unique/show.html.erb</p>
+<script>
+    (function($){
+        $(window).load(function(){
+			$('#tab-container').easytabs();
+  		});
+    })(jQuery);
+</script>
+    
+        <header class="head bimg-05">
+	       <%= render 'partials/search' %>
+
+		    <h1><%= @program.name %></h1>	
+		</header>
+        
+        <div class="content-wrapper">
+        	<div class="info-wrapper dtl-wrapper" id="content">
+            
+         		<div id="tab-container" class="tab-container">
+                
+                  <ul class='etabs'>
+                    <li class='tab'><a href="#tabs1-1">ITINERARIO<span></span></a></li>
+                    <li class='tab'><a href="#tabs1-2">TARIFAS<span></span></a></li>
+                    <li class='tab last'><a href="#tabs1-3">INFORMACIÓN DEL DESTINO<span></span></a></li>
+                    <br class="clearfix"/>
+                  </ul>
+                  
+                  <div class="contentWrapper">
+                      <div id="tabs1-1" class="tabContent">
+                      	<img src="#" class="tabbedImg"/>
+                        <%= @program.description.html_safe %>
+                      </div>
+                      
+                      <div id="tabs1-2" class="tabContent">
+                        <%= @program.prices.html_safe %>
+                      </div>
+                      
+                      <div id="tabs1-3" class="tabContent">
+                        <%= @program.text.html_safe %>
+                      </div>
+                      
+                      <div class="bottomBar">
+                      	<span>|</span>
+                      	<a href>Volver a resultados</a>
+                        <span>|</span>
+                      	<a href>Enviar por mail</a>
+                        <span>|</span>
+                        <a href>Descargar info</a>
+                        <span>|</span>
+                      </div>
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+       
+

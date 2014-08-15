@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => 'unique#index'
 
-  get ':controller/:action'
+  get ':controller/:action(/:id)'
 
   get 'search', to: 'unique#search'
 

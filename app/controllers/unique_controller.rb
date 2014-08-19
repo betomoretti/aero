@@ -27,6 +27,7 @@ class UniqueController < ApplicationController
 
   def show
     if params[:id]
+      @word = params[:word]
       @program = Program.find(params[:id])
       render :layout => 'unique_show'
     else

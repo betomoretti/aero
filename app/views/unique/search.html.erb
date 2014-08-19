@@ -35,7 +35,8 @@
                         <a href=<%= url_for :controller => "unique",:action => "show", :id => unique.id, :word => @word %>><input type="button" value="+info" class="infoBtn"/></a>
                     </div>
                 </div>
-                <img src="images/iDst_thumb_example.jpg"  class="outCol"/>
+                <%= image_tag(unique.temp_photo, height: '120', width: '120', class: "outCol" )  %>
+                <!-- <img src="images/iDst_thumb_example.jpg"  class="outCol"/> -->
             </div>
         <% end %>
         <!-- termina lo que se tiene que repetir -->

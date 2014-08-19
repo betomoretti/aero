@@ -26,10 +26,11 @@
                   
                   <div class="contentWrapper">
                       <div id="tabs1-1" class="tabContent">
-                      	<img src="#" class="tabbedImg"/>
+                      	<!-- <img src="#" class="tabbedImg"/> -->
+                        <%= image_tag(@program.temp_photo, class: "tabbedImg" )  %>
                         <%= @program.description.html_safe %>
                       </div>
-                      
+
                       <div id="tabs1-2" class="tabContent">
                         <%= @program.prices.html_safe %>
                       </div>

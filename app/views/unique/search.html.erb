@@ -1,23 +1,10 @@
-<script>
-    (function($){
-        $(window).load(function(){
-            $("#content").mCustomScrollbar({
-					scrollButtons:{enable:true},
-					theme:"light-thick",
-					
-					scrollbarPosition:"outside"
-				});
-			
-        });
-    })(jQuery);
-</script>
 <header class="head bimg-04">
 	       <%= render 'partials/search' %>
 
     <h1><%= @word %></h1>	
 </header>
 <div class="content-wrapper">
-	<div class="info-wrapper rslt-wrapper" id="content">
+	<div class="rslt-wrapper" id="content">
         
 	<!-- comienza lo que se tiene que repetir -->
         <% @uniques.each do | unique | %>

@@ -19,5 +19,4 @@
 //= require minified/jquery-1.11.0.min
 //= require minified/jquery.easydropdown.min
 //= require minified/jquery.backstretch.min
-//= require minified/jquery.mCustomScrollbar.min
 //= require minified/jquery.easytabs.min

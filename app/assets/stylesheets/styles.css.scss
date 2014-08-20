@@ -252,7 +252,7 @@ input:focus, *:focus
 {
 	outline:none;
 }
-input[type="button"]
+input[type="submit"]
 {
 	border:none;
 	background:#fff;
@@ -262,7 +262,7 @@ input[type="button"]
 	padding:2px 20px;
 	line-height:32px;
 }
-input[type="button"]:hover
+input[type="submit"]:hover
 {
 	background:#000;
 	color:#fff;
@@ -456,7 +456,7 @@ body#inner-page footer.inner-footer div.buttons
 	background:#fff;
 	color:black;
 	width:82.978723404255%;/*780px;*/
-	height:340px;
+	// height:340px;
 	margin:20px;
 	padding:10px 40px;
 	overflow:hidden;

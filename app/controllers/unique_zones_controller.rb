@@ -1,3 +1,0 @@
-class UniqueZonesController < ApplicationController
-  
-end

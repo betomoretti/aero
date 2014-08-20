@@ -4,20 +4,18 @@
   </header>
   
   <div class="content-wrapper">
-  
-  <form id="contact">
-  	<fieldset>
-      <label for="name">Nombre y Apellido</label>
-      <input name="name" type="text">
-      <label for="campany">Empresa</label>
-      <input name="campany" type="text">
-      <label for="email">EMAIL</label>
-      <input name="email" type="text">
-      <label for="msg">CONSULTA</label>
-      <textarea name="msg" rows="3"></textarea>
-      <br class="clearfix"/>
-    </fieldset>
-    <input name="submitBtn" type="button" value="ENVIAR" class="submitBtn">
-  </form>        	
+  <%= form_tag({controller: "unique", action: "send_contact_mail"}, method: "post", id: "contact") do %>
+    <fieldset>
+      <%= label_tag(:name, "Nombre y Apellido") %>
+      <%= text_field_tag(:name) %>
+      <%= label_tag(:company, "Empresa") %>
+      <%= text_field_tag(:company) %>
+      <%= label_tag(:email, "Email") %>
+      <%= text_field_tag(:email) %>
+      <%= label_tag(:msg, "CONSULTA") %>
+      <%= text_area_tag(:msg) %>
+    </fieldset>  
+    <%= submit_tag("ENVIAR", class: "submitBtn") %>
+  <% end %>  	
   <br class="clearfix"/>
 </div>

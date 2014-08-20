@@ -36,5 +36,7 @@ class UniqueController < ApplicationController
   end
 
   def send_contact_mail
+    ContactUsMailer.contact_us(params[:name], params[:company], params[:email], params[:msg]).deliver
+    redirect_to controller: "unique", action: "index"
   end
 end

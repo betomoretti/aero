@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'search', to: 'unique#search'
 
+  post 'unique/send_contact_mail'
+
   # get 'unique/index'
 
   # get 'unique/info'

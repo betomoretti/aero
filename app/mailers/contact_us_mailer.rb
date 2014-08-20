@@ -6,6 +6,6 @@ class ContactUsMailer < ActionMailer::Base
     @empresa = empresa
     @email = email
     @consulta = consulta
-    mail(to: "marianomoretti.87@gmail.com", subject: "Consulta de unique")
+    mail(to: "unique@aerolaplata.com.ar", subject: "Consulta de unique de #{nombre_apellido}, #{empresa}")
   end
 end

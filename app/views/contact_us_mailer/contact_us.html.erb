@@ -4,9 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Mensage  <%= @nombre_apellido %>, <%= @empresa %>, <%= @email %></h1>
-    <p>
-      <%= @consulta %>.<br>
-    </p>
+    <h2>Datos de la consulta</h2>
+
+	<p><strong>Nombre y apellido:</strong> <%= @nombre_apellido %></p>
+	<p><strong>Agencia:</strong> <%= @empresa %></p>
+	<p><strong>Mail:</strong> <%= @email %></p>
+	<p><strong>Consulta:</strong> <%= @consulta %></p>
   </body>
 </html>

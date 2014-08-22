@@ -39,4 +39,10 @@ class UniqueController < ApplicationController
     ContactUsMailer.contact_us(params[:name], params[:company], params[:email], params[:msg]).deliver
     redirect_to controller: "unique", action: "index"
   end
+
+  def send_program_info
+    @program = Program.find(params[:program_id])
+    SendProgramMailer.send_program(params[:email], @program).deliver
+    render nothing: true
+  end
 end

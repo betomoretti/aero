@@ -1,9 +1,29 @@
 <script>
     (function($){
-        $(window).load(function(){
-			$('#tab-container').easytabs();
-  		});
+      $(window).load(function(){
+       $('#tab-container').easytabs();
+      });
     })(jQuery);
+
+    $(document).ready(function(){
+      var csrfToken = $("meta[name='csrf-token']").attr("content");
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-Token': csrfToken
+        }
+      });
+
+      $('#submit-modal').on('click', function () {
+        var params = {email: $('.input-modal').val(), program_id: $('#program_id').val()};
+        console.log(params);
+        $.post('/unique/send_program_info', params, function (){
+          $('#myModal').modal('hide');
+          $('.input-modal').val('');
+        });
+
+        return false;
+      });
+    });
 </script>
     
         <header class="head bimg-05">
@@ -43,15 +63,29 @@
                       	<span>|</span>
                       	<a href=<%= url_for :controller => "unique",:action => "search", :word => @word %>>Volver a resultados</a>
                         <span>|</span>
-                      	<a href>Enviar por mail</a>
+                      	<a data-toggle="modal" data-target="#myModal" href="#">Enviar por mail</a>
                         <span>|</span>
                         <a href>Descargar info</a>
                         <span>|</span>
-                      </div>
+                      </div>                      
                   </div>
                 </div>
                 
             </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <%= label_tag(:email, "Email:", class: "label-modal") %>
+                <%= email_field(:email, nil , :placeholder => 'ejemplo@ejemplo.com', class: "input-modal") %>     
+                <%= hidden_field_tag 'program_id', @program.id %>
+                <%= submit_tag("Enviar", id: "submit-modal" ,class: "submit-modal") %>
+              </div>
+            </div>
+          </div>
         </div>
        
 

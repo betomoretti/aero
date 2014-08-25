@@ -46,8 +46,12 @@
                   
                   <div class="contentWrapper">
                       <div id="tabs1-1" class="tabContent">
-                      	<!-- <img src="#" class="tabbedImg"/> -->
-                        <%= image_tag(@program.temp_photo, class: "tabbedImg" )  %>
+                        
+                        <% if @program.program_photo %>
+                            <%= image_tag(@program.program_photo.photo, class: "tabbedImg" )  %>
+                        <% else %>
+                            <%= image_tag("iDst_thumb_example.jpg", class: "tabbedImg" )  %>
+                        <% end %> 
                         <%= @program.description.html_safe %>
                       </div>
 

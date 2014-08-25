@@ -22,7 +22,11 @@
                         <a href=<%= url_for :controller => "unique",:action => "show", :id => unique.id, :word => @word %>><input type="button" value="+info" class="infoBtn"/></a>
                     </div>
                 </div>
-                <%= image_tag(unique.temp_photo, height: '120', width: '120', class: "outCol" )  %>
+                <% if unique.program_photo %>
+                    <%= image_tag(unique.program_photo.photo, height: '120', width: '120',class: "outCol" )  %>
+                <% else %>
+                    <%= image_tag("iDst_thumb_example.jpg", height: '120', width: '120',class: "outCol" )  %>
+                <% end %> 
                 <!-- <img src="images/iDst_thumb_example.jpg"  class="outCol"/> -->
             </div>
         <% end %>

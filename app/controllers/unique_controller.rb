@@ -46,4 +46,14 @@ class UniqueController < ApplicationController
     SendProgramMailer.send_program(params[:email], @program).deliver
     render nothing: true
   end
+
+  def autocomplete
+    @uniques = Program.search_uniques(params[:term]).order(:name)
+    respond_to do |format|
+      format.html
+      format.json { 
+        render json: @uniques.map(&:name)
+      }
+    end
+  end
 end

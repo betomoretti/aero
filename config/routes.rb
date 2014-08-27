@@ -10,15 +10,7 @@ Rails.application.routes.draw do
   
   post 'unique/send_program_info', to: "unique#send_program_info"
 
-  # get 'unique/index'
-
-  # get 'unique/info'
-
-  # get 'unique/destinations'
-
-  # get 'unique/show'
-
-  # get 'unique/send_contact_mail'
+  get  'unique/autocomplete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

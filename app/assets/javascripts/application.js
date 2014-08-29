@@ -25,9 +25,12 @@
 
 var ready;
 ready = (function() {
-  $("#search-input").autocomplete({
-    source: '/unique/autocomplete.json',
-  });
+  	$.get( '/unique/autocomplete.json', function( data ) {
+	    $("#search-input").autocomplete({
+			source: data
+		});
+	});
+
 });
 
 $(document).ready(ready);

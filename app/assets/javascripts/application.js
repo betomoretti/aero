@@ -21,3 +21,17 @@
 //= require minified/jquery.backstretch.min
 //= require minified/jquery.easytabs.min
 //= require bootstrap
+//= require jquery-ui/autocomplete
+
+var ready;
+ready = (function() {
+  	$.get( '/unique/autocomplete.json', function( data ) {
+	    $("#search-input").autocomplete({
+			source: data
+		});
+	});
+
+});
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

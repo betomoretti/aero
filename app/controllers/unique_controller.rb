@@ -17,7 +17,7 @@ class UniqueController < ApplicationController
 
   def search
     if params[:word]
-      @uniques = Program.search_uniques(params[:word])
+      @uniques = Program.search_uniques(params[:word]).uniq
       @word = params[:word]
     else
       @uniques = Program.uniques
@@ -45,5 +45,15 @@ class UniqueController < ApplicationController
     @program = Program.find(params[:program_id])
     SendProgramMailer.send_program(params[:email], @program).deliver
     render nothing: true
+  end
+
+  def autocomplete
+    @uniques = Program.json_for_autocomplete
+    respond_to do |format|
+      format.html
+      format.json { 
+        render json: @uniques
+      }
+    end
   end
 end

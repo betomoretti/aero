@@ -12,10 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui/autocomplete
  */
+
 
 //= styles
 //= responsive
 //= easydropdown.flat
 //= etabs
 //= bootstrap
+
+

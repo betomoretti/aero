@@ -6,7 +6,7 @@
 @font-face {
     font-family: 'PillGothic';
 
-	src: font-url('/app/assets/fonts/pillgothic300mg-regular-webfont.eot');
+	src: font-url('/assets/pillgothic300mg-regular-webfont.eot');
     src: font-url('/assets/pillgothic300mg-regular-webfont.eot?#iefix') format('embedded-opentype'),
          font-url('/assets/pillgothic300mg-regular-webfont.woff') format('woff'),
          font-url('/assets/pillgothic300mg-regular-webfont.ttf') format('truetype'),
@@ -154,6 +154,8 @@ strong { font-weight:bolder }
 
 /* =Home CSS
 -------------------------------------------------------------- */
+
+
 header.head-home
 {
 
@@ -768,3 +770,8 @@ img.tabbedImg
 	color:#fff;
 }
 
+.ui-menu-item{
+	color: #333333 !important;
+	font-family: 'PillGothic', sans-serif !important;
+	font-color: white !important;
+}

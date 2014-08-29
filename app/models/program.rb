@@ -6,6 +6,8 @@ class Program < ActiveRecord::Base
   has_many :walking_areas
   has_many :areas, :through => :walking_areas
   has_many :countries, :through => :areas
+  belongs_to :end_area , :class_name => 'Area', :foreign_key => 'end_area_id'
+
   scope :uniques, -> { where(category_program_id: CategoryProgram.unique.id)}
   scope :uniques_with_areas, -> {uniques.includes(:areas)}
   scope :uniques_with_countries, -> {uniques_with_areas.includes(:countries)}
@@ -28,4 +30,8 @@ class Program < ActiveRecord::Base
   	end
   	result.uniq.sort
   end 
+
+  def category_name
+    self.category_program.nil? ? "" : self.category_program.name
+  end
 end

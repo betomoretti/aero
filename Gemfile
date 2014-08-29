@@ -33,6 +33,11 @@ gem "paperclip", "~> 4.1"
 
 gem 'aws-sdk'
 
+# pdf gems
+gem 'wkhtmltopdf'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

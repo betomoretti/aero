@@ -17,7 +17,7 @@ class UniqueController < ApplicationController
 
   def search
     if params[:word]
-      @uniques = Program.search_uniques(params[:word]).uniq
+      @uniques = Program.search_uniques(params[:word]).uniq.sort_by{|u| u[:nights]}
       @word = params[:word]
     else
       @uniques = Program.uniques
@@ -29,7 +29,7 @@ class UniqueController < ApplicationController
     if params[:id]
       @word = params[:word]
       @program = Program.find(params[:id])
-      @hostname = request.host<<":"<<4000.to_s || "www.aerolaplata.com.ar"
+      @hostname = "10.0.0.230"
       render :layout => 'unique_show'
     else
       redirect_to controller: "unique", action: "index"
@@ -54,6 +54,22 @@ class UniqueController < ApplicationController
       format.json { 
         render json: @uniques
       }
+    end
+  end
+
+  def show_pdf
+    @program = Program.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "#{@program.id}",
+                :page_size => 'A4',
+                :page_width => 100,
+                :margin => {:top                => 0,
+                           :bottom             => 0,
+                           :left               => 0,
+                           :right              => 0}
+      end
     end
   end
 end

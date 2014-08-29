@@ -1,0 +1,65 @@
+<html>
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'-->
+    <%= wicked_pdf_stylesheet_link_tag "styles_for_pdf" %>
+  </head>
+  
+  <body>
+    
+    <div id="container">
+    
+      <div class="grilla resultados circuitos">
+        <div id="color">          
+        <div id="information" >  
+          
+          <div class="data">
+            <%= wicked_pdf_image_tag 'aero_logo.png', class: "aero_logo" %>
+            <!-- 
+            <div class="validez">
+              <h2>Válido hasta  04/10/2014</h2>
+            </div>
+             -->
+             <%= wicked_pdf_image_tag 'logo-unique-inner.gif', class: "icon" %>
+            <h3>
+              <%=h @program.name%><br>
+              <small><strong><%= raw(@program.category_name %></strong> de <strong><%= @program.nights %> noches </strong> Destino <strong><%= @program.unique_destination.name) if !@program.unique_destination.nil?%><%=raw("</strong>  - Finalizando en <strong>") + @program.end_area.name if !@program.end_area.nil? %> </strong> </small>
+
+            </h3>
+          </div><!-- End:: data -->
+
+          <div class="circuito-info">
+              
+            <%unless @program.days.blank? %>      
+                <strong>Salidas: </strong><%=raw(print_days_names(@program))%>
+            <%end%> 
+          
+          </div><!-- End:: dcircuito-info -->
+          
+          <div class="circuito-info circuito-info2">
+              
+            <%unless @program.areas.blank? %>      
+                <strong>Recorriendo: </strong><%=print_areas_names(@program)%>
+            <%end%>
+        
+          </div><!-- End:: dcircuito-info2 -->
+
+        </div><!-- End:: informacion para -->
+        </div><!-- End:: color para -->
+      <div id="des-pro-481" class="recorrido recorrido-des">
+        <%= @program.description.html_safe %>
+      </div><!-- End:: recorrido - Columna de Texto -->
+      
+      <div class="imageCol importantInfo"><!-- importantInfo - Columna para Información importante-->
+                  <div id="des-summary-<%= @program.id %>" class="recorrido des-program"><%= @program.summary.html_safe %></div>
+
+      </div><!-- End :: importantInfo - Columna para Información importante-->
+      
+    </div><!--  End :: resultados -->
+
+</div>
+  </body>
+</html>

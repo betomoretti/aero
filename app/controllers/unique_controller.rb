@@ -29,7 +29,7 @@ class UniqueController < ApplicationController
     if params[:id]
       @word = params[:word]
       @program = Program.find(params[:id])
-      @hostname = request.host<<":"<<4000.to_s || "www.aerolaplata.com.ar"
+      @hostname = "www.aerolaplata.com.ar"
       render :layout => 'unique_show'
     else
       redirect_to controller: "unique", action: "index"

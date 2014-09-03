@@ -17,11 +17,15 @@ class UniqueController < ApplicationController
 
   def search
     if params[:word]
-      @uniques = Program.search_uniques(params[:word]).uniq
       @word = params[:word]
-    else
-      @uniques = Program.uniques
-      @word = "Todos"
+      if Area.exists?(name: params[:word])
+        @uniques = Area.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
+      elsif Country.exists?(name: params[:word])
+        @uniques = Country.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
+      else  
+        @uniques = Program.uniques
+        @word = "Todos"
+      end
     end
   end
 
@@ -29,7 +33,6 @@ class UniqueController < ApplicationController
     if params[:id]
       @word = params[:word]
       @program = Program.find(params[:id])
-      @hostname = "www.aerolaplata.com.ar"
       render :layout => 'unique_show'
     else
       redirect_to controller: "unique", action: "index"
@@ -48,12 +51,28 @@ class UniqueController < ApplicationController
   end
 
   def autocomplete
-    @uniques = Program.json_for_autocomplete
+    names = Program.json_for_autocomplete(params[:term])
     respond_to do |format|
       format.html
       format.json { 
-        render json: @uniques
+        render json: names
       }
+    end
+  end
+
+  def show_pdf
+    @program = Program.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "#{@program.id}",
+                :page_size => 'A4',
+                :page_width => 100,
+                :margin => {:top                => 0,
+                           :bottom             => 0,
+                           :left               => 0,
+                           :right              => 0}
+      end
     end
   end
 end

@@ -80,16 +80,16 @@
         padding: 0;
         border: none;
         page-break-before: always;
-        width:210mm;
+        width:290mm;
         background-size:33% 200%;
-         background-repeat:repeat-y;
+        background-repeat:repeat-y;
         background-position: right top;
 
       }
   
       #information
       {
-        width:210mm;
+        width:290mm;
         min-height:87mm;
         /*background-color:#d83a14;*/
         background-color:rgba(0, 0, 0, 0.6);

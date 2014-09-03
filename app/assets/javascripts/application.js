@@ -25,11 +25,13 @@
 
 var ready;
 ready = (function() {
-  	$.get( '/unique/autocomplete.json', function( data ) {
+  	// $.get( '/unique/autocomplete.json', function( data ) {
+  	// 	console.log(data);
 	    $("#search-input").autocomplete({
-			source: data
+			source: '/unique/autocomplete.json',
+			minLength: 3
 		});
-	});
+	// });
 
 });
 

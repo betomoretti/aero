@@ -17,11 +17,15 @@ class UniqueController < ApplicationController
 
   def search
     if params[:word]
-      @uniques = Program.search_uniques(params[:word]).uniq.sort_by{|u| u[:nights]}
       @word = params[:word]
-    else
-      @uniques = Program.uniques
-      @word = "Todos"
+      if Area.exists?(name: params[:word])
+        @uniques = Area.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
+      elsif Country.exists?(name: params[:word])
+        @uniques = Country.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
+      else  
+        @uniques = Program.uniques
+        @word = "Todos"
+      end
     end
   end
 
@@ -48,11 +52,11 @@ class UniqueController < ApplicationController
   end
 
   def autocomplete
-    @uniques = Program.json_for_autocomplete
+    names = Program.json_for_autocomplete(params[:term])
     respond_to do |format|
       format.html
       format.json { 
-        render json: @uniques
+        render json: names
       }
     end
   end

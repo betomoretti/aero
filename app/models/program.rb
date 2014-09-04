@@ -3,6 +3,7 @@ class Program < ActiveRecord::Base
   belongs_to :unique_destination
   belongs_to :category_program
   has_one :program_photo
+  belongs_to :area
   has_many :walking_areas
   has_many :areas, through: :walking_areas
   has_many :countries, through: :areas

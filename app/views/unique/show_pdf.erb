@@ -26,7 +26,7 @@
              <%= wicked_pdf_image_tag 'logo-unique-inner.gif', class: "icon" %>
             <h3>
               <%=h @program.name%><br>
-              <small><strong><%= raw(@program.category_name %></strong> de <strong><%= @program.nights %> noches </strong> Destino <strong><%= @program.unique_destination.name) if !@program.unique_destination.nil?%><%=raw("</strong>  - Finalizando en <strong>") + @program.end_area.name if !@program.end_area.nil? %> </strong> </small>
+              <small><strong><%= @program.category_name %></strong> de <strong><%= @program.nights %> noches </strong> Iniciando en <strong><%= @program.area.name if !@program.area.nil?%><%=raw("</strong>  - Finalizando en <strong>") + @program.end_area.name if !@program.end_area.nil? %> </strong> </small>
 
             </h3>
           </div><!-- End:: data -->

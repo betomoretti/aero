@@ -78,7 +78,7 @@
                       
                       <div class="bottomBar">
                       	<span>|</span>
-                      	<a href=<%= url_for :controller => "unique",:action => "search", :word => @word %>>Volver a resultados</a>
+                      	<a href=<%= url_for :controller => "unique",:action => "search", :word => @word, :type_search => @type_search, :id_search => @id %>>Volver a resultados</a>
                         <span>|</span>
                       	<a data-toggle="modal" data-target="#myModal" href="#">Enviar por mail</a>
                         <span>|</span>

@@ -17,10 +17,11 @@ class UniqueController < ApplicationController
 
   def search
     if params[:word]
-      id = params[:id_search]
+      @id = params[:id_search]
       type = params[:type_search].camelize.constantize
-      @uniques = type.find(id).programs.uniq.sort_by{|u| u[:nights]}
+      @uniques = type.find(@id).programs.uniq.sort_by{|u| u[:nights]}
       @word = params[:word]
+      @type_search = params[:type_search]
     else  
       @uniques = Program.uniques
       @word = "Todos"
@@ -29,7 +30,9 @@ class UniqueController < ApplicationController
 
   def show
     if params[:id]
+      @id = params[:id_search]
       @word = params[:word]
+      @type_search = params[:type_search]
       @program = Program.find(params[:id])
       render :layout => 'unique_show'
     else

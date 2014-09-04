@@ -19,7 +19,7 @@
                     <!-- <img src="images/iDst_thumb_example.jpg" class="inCol"/> -->
                     <div class="details">
                         <%= raw unique.summary %>
-                        <a href=<%= url_for :controller => "unique",:action => "show", :id => unique.id, :word => @word %>><input type="button" value="+info" class="infoBtn"/></a>
+                        <a href=<%= url_for :controller => "unique",:action => "show", :id => unique.id, :word => @word, :type_search => @type_search, :id_search => @id %>><input type="button" value="+info" class="infoBtn"/></a>
                     </div>
                 </div>
                 <% if unique.program_photo %>

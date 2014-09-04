@@ -4,4 +4,5 @@ class UniqueZone < ActiveRecord::Base
     def programs 
         Program.find(:all, :conditions => [ "unique_destination_id IN (?)", self.unique_destinations])
     end
+
 end

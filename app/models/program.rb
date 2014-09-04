@@ -16,7 +16,9 @@ class Program < ActiveRecord::Base
   scope :search_uniques, ->(param) {uniques_search_areas(param)+uniques_search_countries(param)}
 
   def self.json_for_autocomplete(param)
-    (Country.filter_by_name(param).collect { |c| c.name }+Area.filter_by_name(param).collect { |a| a.name }).sort
+    countries = Country.filter_by_name(param).as_json.each{|c| c["type"]="Country"}
+    areas = Area.filter_by_name(param).as_json.each{|c| c["type"]="Area"}
+    countries+areas
   end 
 
   def category_name

@@ -25,15 +25,25 @@
 
 var ready;
 ready = (function() {
-  	// $.get( '/unique/autocomplete.json', function( data ) {
-  	// 	console.log(data);
-	    $("#search-input").autocomplete({
-			source: '/unique/autocomplete.json',
-			minLength: 3
-		});
-	// });
-
-});
+    $("#search-input").autocomplete({
+		source: '/unique/autocomplete.json',
+		minLength: 3,
+		focus: function( event, ui ) {
+	        $( "#search-input" ).val( ui.item.name );
+	        return false;
+	    },
+		select: function( event, ui ) {
+			$( "#search-input" ).val( ui.item.name );
+	        $( "#type_search" ).val( ui.item.type );
+	        $( "#id_search" ).val( ui.item.id );
+	 
+	        return false;
+	      }
+	    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+	      return $( "<li>" ).append( "<a>" + item.name + "</a>" ).appendTo( ul );
+	    };
+	});
+// });
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

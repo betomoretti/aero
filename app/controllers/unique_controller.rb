@@ -17,15 +17,13 @@ class UniqueController < ApplicationController
 
   def search
     if params[:word]
+      id = params[:id_search]
+      type = params[:type_search].camelize.constantize
+      @uniques = type.find(id).programs.uniq.sort_by{|u| u[:nights]}
       @word = params[:word]
-      if Area.exists?(name: params[:word])
-        @uniques = Area.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
-      elsif Country.exists?(name: params[:word])
-        @uniques = Country.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
-      else  
-        @uniques = Program.uniques
-        @word = "Todos"
-      end
+    else  
+      @uniques = Program.uniques
+      @word = "Todos"
     end
   end
 

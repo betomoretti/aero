@@ -1,15 +1,21 @@
-<script>
-    // (function($){
-    //     $(window).load(function(){
-    //         $("#content").mCustomScrollbar({
-				// 	scrollButtons:{enable:true},
-				// 	theme:"light-thick",
-					
-				// 	scrollbarPosition:"outside"
-				// });
-			
-    //     });
-    // })(jQuery);
+  <script type="text/javascript">
+  $(document).ready(function(){ 
+    // console.log("asdasda");
+       $('.head').backstretch([
+          "<%= asset_path 'cabeza_01.jpg' %>"
+        , "<%= asset_path 'cabeza_02.jpg' %>"
+        , "<%= asset_path 'cabeza_03.jpg' %>"
+      , "<%= asset_path 'cabeza_04.jpg' %>"
+      , "<%= asset_path 'cabeza_05.jpg' %>"
+      , "<%= asset_path 'cabeza_06.jpg' %>"
+      , "<%= asset_path 'cabeza_07.jpg' %>"
+      , "<%= asset_path 'cabeza_08.jpg' %>"
+      , "<%= asset_path 'cabeza_09.jpg' %>"
+      , "<%= asset_path 'cabeza_10.jpg' %>"
+      ], {duration: 3000, fade: 750});
+
+  });
+
 </script>
 <header class="head header bimg-10">
         	       <%= render 'partials/search' %>

@@ -38,7 +38,10 @@ ready = (function() {
 	        $( "#id_search" ).val( ui.item.id );
 	 
 	        return false;
-	      }
+	    },
+	    search: function(event, ui) {
+	    	console.log(event.currentTarget.value);
+	    }
 	    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
 	      return $( "<li>" ).append( "<a>" + item.name + "</a>" ).appendTo( ul );
 	    };

@@ -137,7 +137,6 @@ html, body {
 	position:relative;
 	width:100%;
 	max-width:940px;
-	min-height: 40%;
 	margin:0 auto;
 }
 
@@ -306,6 +305,7 @@ form#searchForm .dropdown
 -------------------------------------------------------------- */
 footer
 {
+	
 	height:44px;
 	background-color:rgba(0,0,0,.8);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#cc000000',GradientType=0 ); /* IE6-9 */
@@ -479,6 +479,8 @@ body#inner-page footer.inner-footer div.buttons
 {
 	margin-top:48px;
 	text-align:left;
+
+	min-height:38%;
 }
 
 .info-wrapper
@@ -486,7 +488,6 @@ body#inner-page footer.inner-footer div.buttons
 	background:#fff;
 	color:black;
 	width:82.978723404255%;/*780px;*/
-	// height:340px;
 	margin:20px;
 	padding:10px 40px;
 	overflow:hidden;

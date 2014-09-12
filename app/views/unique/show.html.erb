@@ -87,7 +87,8 @@
                             <%= image_tag(@program.program_photo.photo, class: "tabbedImg" )  %>
                         <% else %>
                             <%= image_tag("imagen_inexistente.png", class: "tabbedImg" )  %>
-                        <% end %> 
+                        <% end %>
+                        <%= @program.summary.html_safe %><br>
                         <%= @program.description.html_safe %>
                       </div>
 

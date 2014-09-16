@@ -13,6 +13,7 @@ class UniqueController < ApplicationController
   end
 
   def destinations
+    @countries = Country.unique_countries
   end
 
   def search
@@ -80,6 +81,22 @@ class UniqueController < ApplicationController
       format.html
       format.pdf do
         render :pdf => "#{@program.id}",
+                :page_size => 'A4',
+                :page_width => 100,
+                :margin => {:top                => 0,
+                           :bottom             => 0,
+                           :left               => 0,
+                           :right              => 0}
+      end
+    end
+  end
+
+  def show_country_pdf
+    @country = Country.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "#{@country.id}",
                 :page_size => 'A4',
                 :page_width => 100,
                 :margin => {:top                => 0,

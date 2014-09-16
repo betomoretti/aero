@@ -26,70 +26,17 @@
         
 	<div class="info-wrapper dwnld-wrapper" id="content">
     	<p>
-    	<div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        <div class="dwnldItem">
-        	<a href>
-        	<h2>Proximamente..</h2>
-            <%= image_tag("imagen_inexistente.png") %>
-            <div class="over"></div>
-        	</a>
-        </div>
-        
+        <% @countries.each do | country | %>
+        	<!-- Contenido que se repite -->
+            <div class="dwnldItem">
+            	<a target="_blank" alt="Descargar pdf" title="Descargar pdf" href=<%= url_for :controller => "unique",:action => "show_country_pdf", :id => country.id, :format => "pdf" %>>
+            	<h2><%= country.name %></h2>
+                <%= image_tag(country.country_photo.photo_thumb) %>
+                <div class="over"></div>
+            	</a>
+            </div>
+            <!-- Fin de contenido que se repite -->
+        <% end %>
         <br style="clearfix"/>
         </p>
     </div>

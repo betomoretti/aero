@@ -1,0 +1,40 @@
+<html>
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'-->
+    <%= wicked_pdf_stylesheet_link_tag "styles_for_pdf" %>
+  </head>
+  
+  <body>
+    
+    <div id="container">
+    
+      <div class="grilla resultados circuitos">
+        <div style="background-image:url('<%= @country.country_photo.photo_header %>');">          
+        <div id="information" >  
+          
+          <div class="data">
+            <%= @country.country_photo.photo_header %>
+            <%= wicked_pdf_image_tag 'aero_logo.png', class: "aero_logo" %>
+            
+             <%= wicked_pdf_image_tag 'logo-unique-inner.gif', class: "icon" %>
+            <h3>
+              <%=h @country.name%><br>
+            </h3>
+          </div><!-- End:: data -->
+
+        </div><!-- End:: informacion para -->
+      </div><!-- End:: color para -->
+      <div id="des-pro-481" class="recorrido recorrido-des">
+        <%= @country.text %>
+      </div><!-- End:: recorrido - Columna de Texto -->
+      
+      
+    </div><!--  End :: resultados -->
+
+</div>
+  </body>
+</html>

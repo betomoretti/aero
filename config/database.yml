@@ -5,19 +5,19 @@
 #   gem 'sqlite3'
 #
 default: &default
-  # adapter: mysql2
-  # encoding: utf8
-  # pool: 5
-  # username: unique
-  # password: aerounico
-  # host: 10.0.0.230
   adapter: mysql2
   encoding: utf8
-  database: colo_Aero
   pool: 5
-  username: root
-  password: root
-  host: localhost
+  username: unique
+  password: aerounico
+  host: 10.0.0.230
+  # adapter: mysql2
+  # encoding: utf8
+  # database: colo_Aero
+  # pool: 5
+  # username: root
+  # password: root
+  # host: localhost
 
 development:
   <<: *default

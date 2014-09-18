@@ -1,0 +1,211 @@
+@font-face {
+    font-family: 'PillGothic';
+
+  src: font-url('/assets/pillgothic300mg-regular-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-regular-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-regular-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-regular-webfont.svg#pill_gothic_300mgregular') format('svg');
+    font-weight: normal;
+    font-style:normal;
+}
+
+@font-face {
+    font-family: 'PillGothic';
+
+  src: font-url('/assets/pillgothic300mg-oblique-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-oblique-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-oblique-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-oblique-webfont.svg#pill_gothic_300mgoblique') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PillGothic';
+
+  src: font-url('/assets/pillgothic300mg-bold-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-bold-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-bold-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-bold-webfont.svg#pill_gothic_300mgbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PillGothic';
+
+  src: font-url('/assets/pillgothic300mg-light-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-light-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pillgothic300mg-light-webfont.woff') format('woff'),
+         font-url('/assets/pillgothic300mg-light-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-light-webfont.svg#pill_gothic_300mglight') format('svg');
+    font-weight:light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PillGothic';
+
+  src: font-url('/assets/pillgothic300mg-thin-webfont.eot');
+    src: font-url('/assets/pillgothic300mg-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url("/assets/pillgothic300mg-thin-webfont.woff") format('woff'),
+         font-url('/assets/pillgothic300mg-thin-webfont.ttf') format('truetype'),
+         font-url('/assets/pillgothic300mg-thin-webfont.svg#pill_gothic_300mgthin') format('svg');
+    font-weight:100;
+    font-style: normal;
+}
+
+      html { margin:0;padding:0; width:100% !important;font-family: 'PillGothic', sans-serif !important; font-size: 1.5em;}
+    
+      body { background-color: #FFF; margin:0;padding:0;}
+      * { 
+          -webkit-box-sizing: border-box; 
+          -moz-box-sizing: border-box;   
+          box-sizing: border-box;         
+      }
+      
+      #color{
+        background-color: white !important;
+      }
+      #banner {
+        background-color: transparent !important;
+        /*backgro2und-size:  */
+        width: 1095px !important;
+        height: 330px !important;
+
+      }
+
+      #container
+      {
+        float: left;
+        height: auto;
+        border: none;
+        margin: 0;
+        margin-right:-21px;
+        padding: 0;
+        border: none;
+        page-break-before: always;
+        width:290mm;
+        background-size:33% 200%;
+        background-repeat:repeat-y;
+        background-position: right top;
+
+      }
+  
+      #information
+      {
+        width:290mm;
+        /*min-height:87mm;*/
+        /*background-color:#d83a14;*/
+        /*background-color:rgba(0, 0, 0, 0.6);*/
+        background-position:center;
+        background-size:100% 100%;
+        background-repeat: no-repeat;
+        /*background-size:cover;*/
+      }
+      .data { position:relative;}
+  
+      .aero_logo { width:25%; height:auto; margin:5mm 10mm; padding:0;}
+  
+      .validez{position:absolute;
+        right:0;
+        top:0; width:33%;
+         min-height:10mm;
+         background-color: rgba(0,0,0,.66);}
+        .validez h2{ text-shadow:none; font-size:1em; color:#FFF; text-align:center; margin:2mm;}
+  
+      .data h3
+      {
+        background-color: rgba(0,0,0,.66);  
+        color:#FFF;
+        margin:0;
+        padding:5mm 10mm;
+        font-weight:100;
+        font-size:32pt;
+        text-transform:uppercase;
+      }
+        .data h3 strong {font-weight:300; text-transform:none;}
+        .data h3 small { font-size:40%;   text-transform:none; }
+  
+    /*Recorriendo*/
+      .circuito-info{
+        font-size: 9pt;
+        font-size: small;
+        text-align: left;
+         color:#FFF;
+        font-weight:normal;
+        background-color: rgba(0,0,0,.66); 
+        width:100%;
+        margin:5mm 0 2pt 0;
+        font-size:11pt;
+        font-weight:200;
+        padding:0.5mm 10mm;
+      }
+      .circuito-info strong{color:#231F20;}
+  
+      .circuito-info2{ margin:1px;
+       /* background-color:#231F20; */
+        padding:3mm 10mm; }
+      .circuito-info2 strong{color:#BF1E2D;}
+  
+      .recorrido-des{
+        margin:0;
+        width:100%; 
+        float:left;
+        padding-top: 100px;
+        padding-left: 70px;
+        padding-right: 30px;
+      }
+  
+      .recorrido-des p
+      {
+        padding: 0 10mm;
+        page-break-before: always; 
+      }
+  
+      .imageCol, .importantInfo
+      {
+        width:33%;
+        min-height:100%;
+        padding:0;
+        margin:0;
+        /*background-color:#BF1E2D;*/
+        background-color:rgba(0, 0, 0, 0.6);
+                float:right;
+      }
+        .imageCol img, .importantInfo img
+        {
+          width:100%;
+          height:auto;
+          border-top:1px solid #FFF;
+          border-bottom:2px solid #FFF;
+        }
+
+        .importantInfo
+        {
+          padding:5mm;
+          color:#FFF;
+          font-size:11pt;
+          font-weight:100;
+        }
+        .importantInfo h2
+        {
+          font-weight:300;
+          font-size:12pt;
+          text-transform:uppercase;
+        }
+        .importantInfo strong
+        {
+          color:#000;
+            font-weight:600;
+        }
+          
+        .icon
+        {
+          position:absolute;
+          right:20mm;
+          width:150px;
+          height:169px;
+        }

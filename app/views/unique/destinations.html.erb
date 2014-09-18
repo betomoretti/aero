@@ -20,25 +20,29 @@
 <header class="head bimg-04">
 	       <%= render 'partials/search' %>
 
-    <h1>INFORMACION DESTINO</h1>	
+    <h1>INFORMACION PAÍS</h1>	
 </header>
 <div class="content-wrapper">
         
 	<div class="info-wrapper dwnld-wrapper" id="content">
-    	<p>
+    	<p></p>
         <% @countries.each do | country | %>
         	<!-- Contenido que se repite -->
             <div class="dwnldItem">
-            	<a target="_blank" alt="Descargar pdf" title="Descargar pdf" href=<%= url_for :controller => "unique",:action => "show_country_pdf", :id => country.id, :format => "pdf" %>>
-            	<h2><%= country.name %></h2>
+              <a target="_blank" alt="Descargar pdf" title="Descargar pdf" href=<%= url_for :controller => "unique",:action => "show_country_pdf", :id => country.id, :format => "pdf" %>>
+            	<div class="country-name">
+                <h2><%= country.name %></h2>
+              </div>
+              <div class="crop">
                 <%= image_tag(country.country_photo.photo_thumb) %>
-                <div class="over"></div>
-            	</a>
-            </div>
-            <!-- Fin de contenido que se repite -->
+              </div>
+              <div class="over"></div>
+            </a>
+          </div>
+          <!-- Fin de contenido que se repite -->
         <% end %>
         <br style="clearfix"/>
-        </p>
+        <p></p>
     </div>
     
 </div>

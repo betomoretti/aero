@@ -569,23 +569,38 @@ div.dwnldItem
 		text-decoration:none;
 	}
 
-	div.dwnldItem a h2
+
+
+	div.dwnldItem a div h2
 	{
 		display:block;
 		height:25px;
 		color:black;
 		font-size:15px;
+		line-height: 2em;
 		font-weight:bold;
 		background:#A2C037;
 		border-bottom:2px solid #000;
 		padding-left:4px;
 	}
 
+	div.country-name {
+		margin: 0px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+	}
+
+	div.crop {
+		overflow:hidden;
+	}
+
+
 	div.dwnldItem a img
 	{
 		border:0;
-		width:220px;
+		width:317px;
 		height:120px;
+		margin: 0px 0px 0px -32px;
+		padding:0px 0px 0px 0px;
 	}
 
 	div.dwnldItem .over
@@ -776,4 +791,9 @@ img.tabbedImg
 	color: #333333 !important;
 	font-family: 'PillGothic', sans-serif !important;
 	font-color: white !important;
+}
+
+.crop{
+    background-size: cover;
+    background-attachment: fixed;
 }

@@ -13,7 +13,7 @@ class UniqueController < ApplicationController
   end
 
   def destinations
-    @countries = Country.unique_countries
+    @countries = Country.unique_countries.uniq
   end
 
   def search

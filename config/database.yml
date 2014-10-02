@@ -1,0 +1,27 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  # adapter: mysql2
+  # encoding: utf8
+  # pool: 5
+  # username: unique
+  # password: aerounico
+  # host: 10.0.0.230
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+
+development:
+  <<: *default
+  database: colo_Aero2
+
+production:
+  <<: *default
+  database: AeroLP_Contenidos_production

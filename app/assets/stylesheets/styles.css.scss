@@ -354,8 +354,14 @@ footer .buttons
 	{
 		text-decoration:underline;
 	}
+
 /*
 ------------------------------------------------------*/
+.empty-photo {
+	overflow:hidden;
+	height: 150px;
+	background-image: url('/assets/imagen_inexistente.png');
+}
 header.head
 {
 	position:relative;
@@ -602,7 +608,7 @@ div.dwnldItem
 		border:0;
 		width:317px;
 		height:120px;
-		margin: 0px 0px 0px -32px;
+		margin: 0px 0px 0px -48px;
 		padding:0px 0px 0px 0px;
 	}
 

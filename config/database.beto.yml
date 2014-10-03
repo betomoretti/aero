@@ -20,7 +20,7 @@ default: &default
 
 development:
   <<: *default
-  database: colo_Aero2
+  database: Aerolp
 
 production:
   <<: *default

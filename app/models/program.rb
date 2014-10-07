@@ -24,4 +24,14 @@ class Program < ActiveRecord::Base
   def category_name
     self.category_program.nil? ? "" : self.category_program.name
   end
+
+  def self.days_week
+     Hash["1" => "Lunes", "2" => "Martes", "3" => "Miércoles", "4" => "Jueves", "5" => "Viernes", "6" => "Sábado", "0" => "Domingo"]
+  end
+
+  def days_week_names
+    return nil if days.blank?
+    self.days.gsub(/\D/,' ').split.collect{|number| Program.days_week[number] }
+  end
+  
 end

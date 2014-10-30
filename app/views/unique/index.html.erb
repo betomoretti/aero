@@ -5,22 +5,12 @@
 
 <div id="searchBar" class="homeSearchBar">
     <div class="inner-wrapper">
-        <!-- <form id="searchForm">
-            <input name="strSearch-home" type="text" class="inptsearch-home">
-            <select name="circuit" class="dropdown">
-              <option value="0">circuitos</option>
-              <option value="1">circuitos 1</option>
-              <option value="2">circuitos 2</option>
-              <option value="3">circuitos 3</option>
-              <option value="4">circuitos 4</option>
-              <option value="5">circuitos 5</option>
-              <option value="6">circuitos 6</option>
-            </select>
-            <input name="searchBtn" type="button" value="BUSCAR" class="searchBtn">
-        </form> -->
-        <%= form_tag(search_path, :method => "get", id: "searchForm") do %>
-          <%= text_field_tag 'word',nil, id: "search-input", placeholder: "Ingresá tu ciudad/pais de busqueda", class: "inptsearch-home" %>
-          <%= hidden_field_tag :id_search  %>
+       <%= form_tag(search_path, :method => "get", id: "searchForm") do %>
+          <%= text_field_tag 'word',nil, id: "search-input", placeholder: "Ingresá tu ciudad/pais de busqueda", class: "inptsearch" %>
+          <select id="program_or_service" name="program_or_service" class="dropdown" >
+            <option value="Program" selected="selected">Circuitos</option>
+            <option value="Service">Servicios</option>
+          </select>  
           <%= hidden_field_tag :type_search  %>
           <%= submit_tag "BUSCAR", :name => "searchBtn", class: "searchBtn" %>
         <% end %>

@@ -1,0 +1,29 @@
+<div class="content-wrapper">
+	<div class="rslt-wrapper" id="content">
+        
+	<!-- comienza lo que se tiene que repetir -->
+        <% @uniques.each do | unique | %>
+            <div class="rsltItem">
+                <div class="infoCol">
+                    <h2 alt="<%= unique.name %>" title="<%= unique.name %>"><% if unique.name.length < 40 %> 
+                                <%= unique.name %>
+                            <% else %>
+                                <%= unique.name[0,40]+"..." %>
+                            <% end %> 
+                            <small><%= unique.nights %> Noches</small></h2>
+                    <!-- <img src="images/iDst_thumb_example.jpg" class="inCol"/> -->
+                    <div class="details">
+                        <%= raw unique.summary %>
+                        <a href=<%= url_for :controller => "unique",:action => "show", :id => unique.id, :word => @word, :type_search => @type_search, :id_search => @id %>><input type="button" value="+info" class="infoBtn"/></a>
+                    </div>
+                </div>
+                <% if unique.program_photo %>
+                    <%= image_tag(unique.program_photo.photo, height: '120', width: '120',class: "outCol" )  %>
+                <% else %>
+                    <%= image_tag("imagen_inexistente.png", height: '120', width: '120',class: "outCol" )  %>
+                <% end %> 
+            </div>
+        <% end %>
+        <!-- termina lo que se tiene que repetir -->
+     </div>
+</div>

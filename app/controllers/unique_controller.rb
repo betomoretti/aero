@@ -6,6 +6,9 @@ class UniqueController < ApplicationController
     render :layout => 'application'  
   end
 
+  def services
+  end
+
   def info
   end
 
@@ -66,7 +69,9 @@ class UniqueController < ApplicationController
   end
 
   def autocomplete
-    names = Program.json_for_autocomplete(params[:term])
+    type = params[:program_or_service].camelize.constantize
+    names = type.json_for_autocomplete(params[:term])
+    p names
     respond_to do |format|
       format.html
       format.json { 

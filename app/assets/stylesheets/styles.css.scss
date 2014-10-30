@@ -274,11 +274,6 @@ input.inptsearch
 	margin-right:60px;
 }
 
-input.inptsearch-home
-{
-	@extend .inptsearch;
-	margin-left:170px;
-}
 
 input:focus, *:focus
 {

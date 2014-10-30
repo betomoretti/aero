@@ -25,4 +25,8 @@ module UniqueHelper
 		output  <<	'<br/>'
 		raw(output)
 	end
+
+	def get_content_for_result_pages( )
+		
+	end 
 end

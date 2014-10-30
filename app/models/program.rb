@@ -16,8 +16,8 @@ class Program < ActiveRecord::Base
   scope :search_uniques, ->(param) {uniques_search_areas(param)+uniques_search_countries(param)}
 
   def self.json_for_autocomplete(param)
-    countries = Country.filter_by_name(param).as_json.each{|c| c["type"]="Country"}
-    areas = Area.filter_by_name(param).as_json.each{|c| c["type"]="Area"}
+    countries = Country.filter_by_name_join_programs(param).as_json.each{|c| c["type"]="Country"}
+    areas = Area.filter_by_name_join_programs(param).as_json.each{|c| c["type"]="Area"}
     countries+areas
   end 
 
@@ -33,5 +33,5 @@ class Program < ActiveRecord::Base
     return nil if days.blank?
     self.days.gsub(/\D/,' ').split.collect{|number| Program.days_week[number] }
   end
-  
+   
 end

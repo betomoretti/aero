@@ -26,8 +26,20 @@
 var ready;
 ready = (function() {
     $("#search-input").autocomplete({
-		source: '/unique/autocomplete.json',
-		minLength: 3,
+		source: function(request, response) {
+	        $.	ajax({
+	            url: '/unique/autocomplete.json',
+	            dataType: "json",
+	            data: {
+	                term : request.term,
+	                program_or_service: $("#program_or_service").val()
+	            },
+	            success: function(data) {
+	                response(data);
+	            }
+	        });
+	    },
+		// minLength: 3,
 		focus: function( event, ui ) {
 	        $( "#search-input" ).val( ui.item.name );
 	        return false;
@@ -38,9 +50,6 @@ ready = (function() {
 	        $( "#id_search" ).val( ui.item.id );
 	 
 	        return false;
-	    },
-	    search: function(event, ui) {
-	    	console.log(event.currentTarget.value);
 	    }
 	    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
 	      return $( "<li>" ).append( "<a>" + item.name + "</a>" ).appendTo( ul );

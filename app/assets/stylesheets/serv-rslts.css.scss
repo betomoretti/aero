@@ -1,0 +1,179 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.rslt-wrapper .rslt-column 
+{
+	width:50%;
+	float:left;
+	line-height:1.4
+}
+
+.rslt-wrapper .rslt-column:nth-child(odd) { padding: 0 15px 0 0;}
+
+.rslt-wrapper .rslt-column:nth-child(even) { padding: 0 0 0 15px;}
+
+.rslt-wrapper .rsltItem-serv
+{
+	margin:0 0 30px 0;
+	color:#fff;
+}
+
+.rslt-wrapper .rsltItem-serv .infoCol{  width:100%;  margin:0 0 2px 0 ; background: rgb(112,112,110); /* Old browsers */
+
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzcwNzA2ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY0JSIgc3RvcC1jb2xvcj0iIzcwNzA2ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iIzk0YzExZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzk0YzExZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+
+background: -moz-linear-gradient(left,  rgba(112,112,110,1) 0%, rgba(112,112,110,1) 64%, rgba(148,193,30,1) 65%, rgba(148,193,30,1) 99%); /* FF3.6+ */
+
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(112,112,110,1)), color-stop(64%,rgba(112,112,110,1)), color-stop(65%,rgba(148,193,30,1)), color-stop(99%,rgba(148,193,30,1))); /* Chrome,Safari4+ */
+
+background: -webkit-linear-gradient(left,  rgba(112,112,110,1) 0%,rgba(112,112,110,1) 64%,rgba(148,193,30,1) 65%,rgba(148,193,30,1) 99%); /* Chrome10+,Safari5.1+ */
+
+background: -o-linear-gradient(left,  rgba(112,112,110,1) 0%,rgba(112,112,110,1) 64%,rgba(148,193,30,1) 65%,rgba(148,193,30,1) 99%); /* Opera 11.10+ */
+
+background: -ms-linear-gradient(left,  rgba(112,112,110,1) 0%,rgba(112,112,110,1) 64%,rgba(148,193,30,1) 65%,rgba(148,193,30,1) 99%); /* IE10+ */
+
+background: linear-gradient(to right,  rgba(112,112,110,1) 0%,rgba(112,112,110,1) 64%,rgba(148,193,30,1) 65%,rgba(148,193,30,1) 99%); /* W3C */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70706e', endColorstr='#94c11e',GradientType=1 ); /* IE6-8 */
+
+} 
+
+div {
+	
+}
+.ttlCol { background-color:#70706e; width:64%; float:left; height:100%; padding: 8px 20px}
+.ttlCol h2{ font-size:1.1em; font-weight:500; }
+.priceCol {background-color:#94c11e; float:right; width:36%; border-left:4px solid black; height:100%; padding:8px 10px }
+
+.priceCol h3
+{ font-size:1.5em; font-weight:500; }
+.priceCol h3 small {font-size:13px!important}
+.rslt-wrapper .rsltItem-serv h5 {font-size:.8em!important}
+
+div.serv-details
+{
+	clear:both;
+	background-color:#fff;
+	 padding:5px 5px 5px 10px;
+	 margin:2px 0 0 0 ;
+	 
+}
+
+div.serv-details .content {margin-bottom:20px;}
+
+.expander-wrapper{height:22px;padding:0; margin:0; }
+
+a.expander
+{
+	font-weight:bold;
+	font-size:.813em;
+	padding:0 0 0 15px;
+	background:url("/assets/verMas-arrow.gif") no-repeat left top;
+	color:#000;
+	text-decoration:none;
+	display:inline-block;
+	height:20px;
+	line-height:20px;
+	margin-left:-10px;
+}
+a.expander.expanded
+{
+	background-position:left bottom;
+}
+
+div.serv-details > div.content > p {color:#000; font-size:.75em}
+
+label.rslt_check  {
+	color:#000; float:right; font-size:.813em; padding:0; text-transform:none; font-weight:400;
+	 display: block;  
+    cursor: pointer;  
+    position: relative;  
+   padding-right: 62px;
+	line-height:1.8;
+    background:url("/assets/mail-icon.gif") no-repeat right top;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	max-width: 76%;
+
+	}
+
+.serv-details input[type="checkbox"]
+{
+	float:right;
+	display:none;
+}
+
+label.rslt_check:after {  
+    content: "";  
+	
+    display: inline-block;  
+   /* float:right;*/
+    width: 20px;  
+    height: 20px;  
+  
+  
+    position: absolute;  
+    right: 0;  top:0px;
+    background-color: #aaa;  
+    border-radius: 4px;  
+}  
+
+
+input[type=checkbox]:checked + label:after   {  
+	content: "";
+	font-size: 15px;
+	color: #fff;
+	text-align: center;
+	background:#aaa url("/assets/check.gif") no-repeat center center;
+}  
+
+.action-wrapper{text-align:center}
+
+a.btn-send{
+	height:35px;
+	background:#70706e url("/assets/mail-btn.png") no-repeat right center;
+	color:#fff;
+	display:inline-block;
+	padding:2px 42px 2px 5px;
+	text-decoration:none;
+	line-height:35px;
+	font-weight:bold
+}
+a.btn-send:hover{background-color:#94c11e}
+
+
+/* Large desktop */
+@media (min-width: 1200px)
+{ 
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px)
+{
+	label.rslt_check  { font-size:.75em; }
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px)
+{
+	label.rslt_check  { font-size:.75em; }
+		.rslt-wrapper .rslt-column 
+	{
+		width:100%;
+		float:none;
+	}	
+	
+	.rslt-wrapper .rslt-column:nth-child(odd), .rslt-wrapper .rslt-column:nth-child(even) { padding: 0;}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px)
+{
+	label.rslt_check  { font-size:.813em; }
+}

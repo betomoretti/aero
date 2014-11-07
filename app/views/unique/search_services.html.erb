@@ -1,0 +1,234 @@
+  <script type="text/javascript">
+  $(document).ready(function(){ 
+      
+      var isEmail = function (email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+      };
+
+      $('.serv-details input[type="checkbox"]').on('click', function () {
+        if (this.value == 1) {
+          this.value = 0;
+        } else{
+          this.value = 1;
+        };
+      });
+
+      $('#submit-modal').on('click', function (e) {
+        e.preventDefault();
+        var checkedValues = $('.serv-details input[type="checkbox"]').map(function() {
+          if ($(this).val() == 1) {
+              return $(this).attr('data-id');  
+            };
+          }).get();
+        
+        if ( checkedValues.length == 0){
+          return false;
+        }
+
+        var params = {email: $('.input-modal').val(), ids: checkedValues};
+        var opts = {
+          lines: 8, // The number of lines to draw
+          length: 10, // The length of each line
+          width: 5, // The line thickness
+          radius: 15, // The radius of the inner circle
+          corners: 1, // Corner roundness (0..1)
+          rotate: 0, // The rotation offset
+          direction: 1, // 1: clockwise, -1: counterclockwise
+          color: '#4a4943', // #rgb or #rrggbb or array of colors
+          speed: 1, // Rounds per second
+          trail: 60, // Afterglow percentage
+          shadow: false, // Whether to render a shadow
+          hwaccel: false, // Whether to use hardware acceleration
+          className: 'spinner', // The CSS class to assign to the spinner
+          zIndex: 2e9, // The z-index (defaults to 2000000000)
+          top: 'auto', // Top position relative to parent in px
+          left:'auto' // Left position relative to parent in px
+        };
+        var spinner = new Spinner(opts);
+        if (isEmail(params.email)) {
+          $.ajax({
+              type: 'GET',
+              url: '/unique/send_services_info',
+              data: params,
+              beforeSend: function() {
+                  var target = document.getElementById('modal-spin');
+                  spinner.spin(target);
+              },
+              success: function(data) {
+              },
+              complete: function() {
+                spinner.stop();
+                $('#email_').val('');
+                $('#myModal').modal('hide');
+              }
+          });
+
+          return true;
+        }else{
+          if ($('.modal-content .modal-footer').length == 0) {
+            $('.modal-content').append('<div class="modal-footer"><p style="color:red;">Email incorrecto</p></div>');
+            window.setTimeout(function () {
+              $('.modal-footer').remove();
+            }, 3000)
+          }
+
+          return false;
+        };
+      });
+
+       $('.head').backstretch([
+          "<%= asset_path 'cabeza_01.jpg' %>"
+        , "<%= asset_path 'cabeza_02.jpg' %>"
+        , "<%= asset_path 'cabeza_03.jpg' %>"
+      , "<%= asset_path 'cabeza_04.jpg' %>"
+      , "<%= asset_path 'cabeza_05.jpg' %>"
+      , "<%= asset_path 'cabeza_06.jpg' %>"
+      , "<%= asset_path 'cabeza_07.jpg' %>"
+      , "<%= asset_path 'cabeza_08.jpg' %>"
+      , "<%= asset_path 'cabeza_09.jpg' %>"
+      , "<%= asset_path 'cabeza_10.jpg' %>"
+      ], {duration: 3000, fade: 750});
+
+  });
+
+</script>
+<header class="head bimg-04">
+	       <%= render 'partials/search' %>
+
+      <h1><%= @word %></h1>
+
+</header>
+
+<div class="content-wrapper">
+          
+            <div class="info-wrapper rslt-wrapper" id="content">
+              
+            
+              <ul class="rslt-column">
+                  <% @uniques.each do | unique | %>
+                    <!--  CONTENIDO QUE SER REPITE  -->
+                    <li class="rsltItem-serv">
+                    
+                      <div class="infoCol">
+            
+                        <div class="ttlCol">
+                            <h2 alt="<%= unique.name %>" title="<%= unique.name %>">
+                              <% if unique.name.length > 27 %>
+                                <%= unique.name[0,27]+"..." %>
+                              <% else %>
+                                <%= unique.name %>
+                              <% end %>
+                            </h2>
+                            <span><%= unique.destination.name %></span>
+                        </div>
+                        <div class="priceCol">
+                            <h3><%= unique.country.coin.symbol %> <%= parse_price(unique.get_price_with_markup) %></h3>
+                            <h5>CHD <%= unique.country.coin.symbol %> <%= parse_price(unique.get_child_price_with_markup) %> </h5>
+                        </div><!-- /.priceCol -->
+                        <br class="clearfix" />
+                      </div><!-- /.infoCol -->
+                                  
+                        <div class="serv-details collapsible collapse-close" id="rsltDetail0">
+                            <div><a class="expander" href="#">VER MÁS</a>
+                              <input name="<%= "rslt-check"+unique.id.to_s %>" data-id="<%= unique.id.to_s %>" id="<%= "rslt-check"+unique.id.to_s %>" value="0" type="checkbox" />
+                                <label class="rslt_check" for="<%= "rslt-check"+unique.id.to_s %>">
+                                    Seleccione para enviar por mail
+                                </label>
+                            </div>
+                            
+                            <div class="content">
+                                <p><%= unique.name%></p>
+                                <p><%= unique.destination.name%></p>
+                                <p><%= unique.country.coin.symbol %> <%=  parse_price(unique.get_price_with_markup) %> + <%= parse_price(unique.get_tax_integer)  %> Imp</p>
+                                <p>CHD <%= unique.country.coin.symbol %> <%= parse_price(unique.get_child_price_with_markup) %> + <%= parse_price(unique.get_tax_child_integer)  %> Imp</p>
+                                <p><%= unique.description %></p>
+                            </div><!-- /.content -->
+                            
+                        </div><!-- /.serv-details -->
+                            
+                        
+                    </li><!-- /.rsltItem-serv -->
+                    <% end %>
+                    <!--  CONTENIDO QUE SER REPITE  -->
+                    </ul><!-- /.rslt-column"-->
+
+
+                    <ul class="rslt-column">
+                  <% @uniques1.each do | unique1 | %>
+                    <!--  CONTENIDO QUE SER REPITE  -->
+                    <li class="rsltItem-serv">
+                    
+                      <div class="infoCol">
+            
+                        <div class="ttlCol">
+                            <h2 alt="<%= unique1.name %>" title="<%= unique1.name %>">
+                              <% if unique1.name.length > 27 %>
+                                <%= unique1.name[0,27]+"..." %>
+                              <% else %>
+                                <%= unique1.name %>
+                              <% end %>
+                            </h2>
+                            <span><%= unique1.destination.name %></span>
+                        </div>
+                        <div class="priceCol">
+                            <h3><%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_price_with_markup) %></h3>
+                            <h5>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup) %> </h5>
+                        </div><!-- /.priceCol -->
+                        <br class="clearfix" />
+                      </div><!-- /.infoCol -->
+                                  
+                        <div class="serv-details collapsible collapse-close" id="rsltDetail0">
+                            <div><a class="expander" href="#">VER MÁS</a>
+                              <input name="<%= "rslt-check"+unique1.id.to_s %>" data-id="<%= unique1.id.to_s %>" id="<%= "rslt-check"+unique1.id.to_s %>" value="0" type="checkbox" />
+                                <label class="rslt_check" for="<%= "rslt-check"+unique1.id.to_s %>">
+                                    Seleccione para enviar por mail
+                                </label>
+                            </div>
+                            
+                            <div class="content">
+                                <p><%= unique1.name%></p>
+                                <p><%= unique1.destination.name%></p>
+                                <p><%= unique1.country.coin.symbol %> <%=  parse_price(unique1.get_price_with_markup) %> + <%= parse_price(unique1.get_tax_integer)  %> Imp</p>
+                                <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup) %> + <%= parse_price(unique1.get_tax_child_integer)  %> Imp</p>
+                                <p><%= unique1.description %></p>
+                            </div><!-- /.content -->
+                            
+                        </div><!-- /.serv-details -->
+                            
+                        
+                    </li><!-- /.rsltItem-serv -->
+                    <% end %>
+                    <!--  CONTENIDO QUE SER REPITE  -->
+                    </ul><!-- /.rslt-column"-->
+
+
+             </div>
+             <% unless @uniques.blank? %>
+              <div class="action-wrapper">
+                <div id="spin"></div>
+                <a data-toggle="modal" data-target="#myModal" href="#" class="btn-send">ENVIAR POR MAIL</a>
+              </div>
+             <% end %>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <%= label_tag(:email, "Email:", class: "label-modal") %>
+                <%= email_field(:email, nil , :placeholder => 'ejemplo@ejemplo.com', class: "input-modal") %>
+                <span id="modal-spin" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
+                <%= submit_tag("Enviar", id: "submit-modal" ,class: "submit-modal") %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <script type="text/javascript" src="../../assets/minified/simple-expand.min.js"></script>
+    <script type="text/javascript">
+  
+        $(function () {
+            $('.expander').simpleexpand();
+        });
+    
+  </script>

@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   get ':controller/:action(/:id)'
 
-  get 'search', to: 'unique#search'
+  get 'search/services', to: 'unique#search_services'
+  get 'search/circuits', to: 'unique#search_circuits'
 
   post 'unique/send_contact_mail'
-  
+  get 'unique/send_services_mail'
   post 'unique/send_program_info', to: "unique#send_program_info"
 
   get  'unique/autocomplete'

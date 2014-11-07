@@ -6,7 +6,64 @@ class UniqueController < ApplicationController
     render :layout => 'application'  
   end
 
-  def services
+  def search_circuits
+    unless params[:word].blank?
+      if params[:id_search].blank?
+        if Area.exists?(name: params[:word])
+          @uniques = Area.uniques_programs_by_area_name(params[:word])
+          @word = params[:word]
+        elsif Country.exists?(name: params[:word])
+          @uniques = Country.uniques_programs_by_country_name(params[:word])
+          @word = params[:word]
+        else  
+          @uniques = []
+          @word = "No hay resultados para tu búsqueda"
+        end
+      else  
+        @id = params[:id_search]
+        type = params[:type_search].camelize.constantize
+        @uniques = type.find(@id).programs.uniq.sort_by{|u| u[:nights]}
+        @word = params[:word]
+        @type_search = params[:type_search]
+      end
+    else  
+      @uniques = []
+      @word = "No hay resultados para tu búsqueda"
+    end
+  end
+
+  def search_services
+    unless params[:word].blank?
+      if params[:id_search].blank?
+        if Area.exists?(name: params[:word])
+          aux = Area.uniques_services_by_area_name(params[:word])
+          results = aux.each_slice(aux.count/2).to_a
+          @uniques = results[0]
+          @uniques1 = results[1]
+          @word = params[:word]
+        elsif Country.exists?(name: params[:word])
+          aux = Country.uniques_services_by_country_name(params[:word])
+          results = aux.each_slice(aux.count/2).to_a
+          @uniques = results[0]
+          @uniques1 = results[1]
+          @word = params[:word]
+        else  
+          results = []
+          @word = "No hay resultados para tu búsqueda"
+        end
+      else  
+        @id = params[:id_search]
+        type = params[:type_search].camelize.constantize
+        aux = type.find(@id).services
+        results = aux.each_slice(aux.count/2).to_a
+        @uniques = results[0]
+        @uniques1 = results[1]
+        @word = params[:word]
+      end
+    else  
+      @uniques = []
+      @word = "No hay resultados para tu búsqueda"
+    end
   end
 
   def info
@@ -68,14 +125,20 @@ class UniqueController < ApplicationController
     render nothing: true
   end
 
+  def send_services_info
+    @services = Service.where(:id => params[:ids]).map { |s| s }
+    SendServicesMailer.send_services(params[:email], @services).deliver
+    render nothing: true
+  end
+
   def autocomplete
-    type = params[:program_or_service].camelize.constantize
-    names = type.json_for_autocomplete(params[:term])
-    p names
+    names_circuits = Program.json_for_autocomplete(params[:term])
+    names_services = Service.json_for_autocomplete(params[:term])
+    names = names_circuits+names_services
     respond_to do |format|
       format.html
       format.json { 
-        render json: names
+        render json: names.uniq
       }
     end
   end

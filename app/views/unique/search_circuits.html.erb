@@ -1,7 +1,32 @@
+  <script type="text/javascript">
+  $(document).ready(function(){ 
+    // console.log("asdasda");
+       $('.head').backstretch([
+          "<%= asset_path 'cabeza_01.jpg' %>"
+        , "<%= asset_path 'cabeza_02.jpg' %>"
+        , "<%= asset_path 'cabeza_03.jpg' %>"
+      , "<%= asset_path 'cabeza_04.jpg' %>"
+      , "<%= asset_path 'cabeza_05.jpg' %>"
+      , "<%= asset_path 'cabeza_06.jpg' %>"
+      , "<%= asset_path 'cabeza_07.jpg' %>"
+      , "<%= asset_path 'cabeza_08.jpg' %>"
+      , "<%= asset_path 'cabeza_09.jpg' %>"
+      , "<%= asset_path 'cabeza_10.jpg' %>"
+      ], {duration: 3000, fade: 750});
+
+  });
+
+</script>
+<header class="head bimg-04">
+	       <%= render 'partials/search' %>
+
+    <h1><%= @word %></h1>	
+</header>
+
 <div class="content-wrapper">
-	<div class="rslt-wrapper" id="content">
+  <div class="rslt-wrapper" id="content">
         
-	<!-- comienza lo que se tiene que repetir -->
+  <!-- comienza lo que se tiene que repetir -->
         <% @uniques.each do | unique | %>
             <div class="rsltItem">
                 <div class="infoCol">
@@ -27,3 +52,4 @@
         <!-- termina lo que se tiene que repetir -->
      </div>
 </div>
+	

@@ -112,7 +112,7 @@ textarea {
 }
 
 .etabs {
-	margin: 0px 0px -14px 0px;
+	margin: 0px 0px 0px 0px;
 }
 
 *, *:after, *:before {
@@ -197,7 +197,7 @@ div#searchBar
 
 div#searchBar form#searchForm
 {
-	text-alidn:left;
+	text-align:left;
 	display:block;
 	padding:57px 0;
 }
@@ -223,6 +223,7 @@ div#searchBar form#searchForm
     height: 32px;
     line-height: 32px;
     padding-top: 2px;
+    width: 350px;
 }
 
 // .submit-modal {
@@ -264,6 +265,9 @@ input
 	line-height:32px;
 	padding-top:2px
 }
+
+
+
 input.inptsearch
 {
 	width:400px;
@@ -272,6 +276,7 @@ input.inptsearch
 	background-position:4px 4px;
 	padding-left:34px;
 	margin-right:60px;
+	float: left;
 }
 
 
@@ -279,6 +284,7 @@ input:focus, *:focus
 {
 	outline:none;
 }
+
 input[type="submit"]
 {
 	border:none;
@@ -288,6 +294,8 @@ input[type="submit"]
 	min-width:100px;
 	padding:2px 20px;
 	line-height:32px;
+	margin-bottom: 10px;
+
 }
 input[type="submit"]:hover
 {
@@ -295,10 +303,26 @@ input[type="submit"]:hover
 	color:#fff;
 }
 
+form#searchForm .dropdown.index{
+	margin-right:60px;
+	min-width: 240px;
+	margin-top: 0px !important;
+}
+
 form#searchForm .dropdown
 {
 	margin-right:60px;
+	min-width: 240px;
+	margin-top: 10px !important;
 }
+
+
+.button-input-div{
+	float: right;
+	margin-right: 57px;
+}
+
+
 /* =Home footer CSS
 -------------------------------------------------------------- */
 footer

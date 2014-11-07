@@ -1,4 +1,4 @@
-<script>
+  <script>
     (function($){
       $(window).load(function(){
        $('#tab-container').easytabs();
@@ -13,6 +13,24 @@
       };
 
       var csrfToken = $("meta[name='csrf-token']").attr("content");
+      var opts = {
+        lines: 8, // The number of lines to draw
+        length: 10, // The length of each line
+        width: 5, // The line thickness
+        radius: 15, // The radius of the inner circle
+        corners: 1, // Corner roundness (0..1)
+        rotate: 0, // The rotation offset
+        direction: 1, // 1: clockwise, -1: counterclockwise
+        color: '#4a4943', // #rgb or #rrggbb or array of colors
+        speed: 1, // Rounds per second
+        trail: 60, // Afterglow percentage
+        shadow: false, // Whether to render a shadow
+        hwaccel: false, // Whether to use hardware acceleration
+        className: 'spinner', // The CSS class to assign to the spinner
+        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        top: 'auto', // Top position relative to parent in px
+        left:'auto' // Left position relative to parent in px
+      };
       $.ajaxSetup({
         headers: {
           'X-CSRF-Token': csrfToken
@@ -20,18 +38,32 @@
       });
 
       $('#submit-modal').on('click', function () {
+
         var params = {email: $('.input-modal').val(), program_id: $('#program_id').val()};
+        var spinner = new Spinner(opts);
         if (isEmail(params.email)) {
-          $.post('/unique/send_program_info', params, function (){
-            $('#myModal').modal('hide');
-            $('.input-modal').val('');
+          $.ajax({
+              type: 'POST',
+              url: '/unique/send_program_info',
+              data: params,
+              beforeSend: function() {
+                  var target = document.getElementById('modal-spin');
+                  spinner.spin(target);
+              },
+              success: function(data) {
+              },
+              complete: function() {
+                spinner.stop();
+                $('#email_').val('');
+                $('#myModal').modal('hide');
+              }
           });
 
           return true;
         }else{
           if ($('.modal-content .modal-footer').length == 0) {
             console.log("entro");
-            $('.modal-content').append('<div class="modal-footer"><p>Email incorrecto</p></div>');
+            $('.modal-content').append('<div class="modal-footer"><p style="color:red;">Email incorrecto</p></div>');
             window.setTimeout(function () {
               $('.modal-footer').remove();
             }, 3000)
@@ -103,7 +135,7 @@
                       <div class="bottomBar">
                         <% unless @word.blank? %>
                         	<span>|</span>
-                        	<a href=<%= url_for :controller => "unique",:action => "search", :word => @word, :type_search => @type_search, :id_search => @id %>>Volver a resultados</a>
+                        	<a href=<%= url_for :controller => "unique",:action => "search_circuits", :word => @word, :type_search => @type_search, :id_search => @id %>>Volver a resultados</a>
                         <% end %>
                         <span>|</span>
                       	<a data-toggle="modal" data-target="#myModal" href="#">Enviar por mail</a>
@@ -124,11 +156,13 @@
               <div class="modal-body">
                 <%= label_tag(:email, "Email:", class: "label-modal") %>
                 <%= email_field(:email, nil , :placeholder => 'ejemplo@ejemplo.com', class: "input-modal") %>     
-                <%= hidden_field_tag 'program_id', @program.id %>
+                <%= hidden_field_tag 'program_id', @program.id %><span id="modal-spin" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
                 <%= submit_tag("Enviar", id: "submit-modal" ,class: "submit-modal") %>
               </div>
             </div>
           </div>
         </div>
+        
+
        
 

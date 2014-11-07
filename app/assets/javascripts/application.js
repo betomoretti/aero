@@ -7,7 +7,7 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file.
 //
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// Read Sprockets READTME (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
 // require jquery
@@ -22,9 +22,42 @@
 //= require minified/jquery.easytabs.min
 //= require bootstrap
 //= require jquery-ui/autocomplete
+//= require spin.min
 
 var ready;
 ready = (function() {
+	if (window.location.pathname == "/") {
+		$('div.dropdown').addClass('index');
+	};
+
+
+    $('.searchBtn').on('click', function () {
+    	$('form#searchForm .dropdown').css('border-color','red');
+    	$('form#searchForm .dropdown').attr('data-require','true');
+    });
+
+
+	// Cambia el action del formulario dependiendo si van a buscarse servicios o circuitos. Toma el valor del select
+	$("#program_or_service").on('change',(function(){
+			
+			value = this.value;
+
+			if ($('form#searchForm .dropdown').attr('data-require') == 'true' && value != "") {
+				$('form#searchForm .dropdown').css('border-color','green');
+			}else if ($('form#searchForm .dropdown').attr('data-require') == 'true' && value == ""){
+				$('form#searchForm .dropdown').css('border-color','red');
+			}
+			
+			if (value == "Service") {
+				$("#searchForm").attr('action', '/search/services')
+			}else{
+				$("#searchForm").attr('action', '/search/circuits')
+			};
+		})
+	);
+
+
+	// Autocomplete
     $("#search-input").autocomplete({
 		source: function(request, response) {
 	        $.	ajax({
@@ -39,7 +72,7 @@ ready = (function() {
 	            }
 	        });
 	    },
-		// minLength: 3,
+		minLength: 3,
 		focus: function( event, ui ) {
 	        $( "#search-input" ).val( ui.item.name );
 	        return false;

@@ -1,15 +1,16 @@
 <div class="inner-wrapper">
   <div id="searchBar"><a href=<%= url_for controller:"unique", action:"index" %> alt="Volver al home" title="Volver al home">
     <div class="logo"></div></a>
-      <%= form_tag(search_path, :method => "get", id: "searchForm") do %>
+      <%= form_tag('/search/circuits', :method => "get", id: "searchForm") do %>
           <%= text_field_tag 'word',nil, id: "search-input", placeholder: "Ingresá tu ciudad/pais de busqueda", class: "inptsearch" %>
           <%= hidden_field_tag :id_search  %>
-          <select id="program_or_service" name="circuit" class="dropdown" >
-            <option value="Program" selected="selected">Circuitos</option>
-            <option value="Service">Servicios</option>
-          </select> 
+            <select id="program_or_service" name="program_or_service" class="dropdown" required>
+              <option value="" disabled="disabled">Seleccione una opción...</option>
+              <option value="Program">Circuitos</option>
+              <option value="Service">Servicios</option>
+            </select> 
           <%= hidden_field_tag :type_search  %>
-          <%= submit_tag "BUSCAR", :name => "searchBtn", class: "searchBtn" %>
+            <%= submit_tag "BUSCAR", :name => "searchBtn", class: "searchBtn" %>
       <% end %>
   </div>
 </div>

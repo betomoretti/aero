@@ -1,0 +1,10 @@
+<% @services.each do | service | %>
+	<h1><%= service.name%></h1>
+	<h4>Destino:</h4>
+	<p><%= service.destination.name%></p>
+	<h4> Precios: </h4>
+	<p><%= service.country.coin.symbol %> <%=  parse_price(service.get_price_with_markup) %> + <%= parse_price(service.get_tax_integer)  %> Imp</p>
+	<p>CHD <%= service.country.coin.symbol %> <%= parse_price(service.get_child_price_with_markup) %> + <%= parse_price(service.get_tax_child_integer)  %> Imp</p>
+	<h4> Descripción: </h4>
+	<p><%= service.description %></p>
+<% end %>

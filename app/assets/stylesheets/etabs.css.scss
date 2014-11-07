@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.etabs { margin: 0; padding: 0 0 0 10px; clear:both;}
+
+.tab { display:block; zoom:1;  position: relative; margin:0; float:left; }
+
+.tab a { -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;font-size: 1.125em;  display: block; padding: 0 20px; outline: none; text-decoration:none; color:#fff; height:30px;line-height: 32px;position:relative;  border: solid 1px #B2C632; border-bottom: none; border-right: solid 0px #B2C632;}
+
+.tab.last a { border-right: solid 1px #B2C632; }
+
+.tab a:hover { text-decoration: underline; }
+
+.tab.active { background: #fff;   color:#000; background: #fff}
+
+.tab a span
+{
+    position: absolute;
+	top:-1px;
+	right:0;
+	
+	width:12px;
+	height:30px;
+	background:url("/assets/fake-tab-border.gif");
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	display:none;
+}
+
+.tab a.active {color:#000; border-right: solid 0px #B2C632;padding: 0 30px 0 20px;}
+
+.tab a.active span {display:block; }
+
+.tab-container .panel-container { background: #fff; border: solid #B2C632 1px;}
+    

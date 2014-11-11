@@ -1,24 +1,43 @@
 @charset "UTF-8";
 /* CSS Document */
 
-.rslt-wrapper .rslt-column 
+.info-wrapper-serv
+{
+	background:#fff;
+	color:black;
+	width:100%;/*780px;*/
+	margin:20px;
+	padding:10px 40px;
+	overflow:hidden;
+}
+
+.rslt-wrapper-serv{ 
+	background:none; 
+	padding:0; 
+	margin: 20px 0px;
+}
+
+.rslt-column-serv 
 {
 	width:50%;
 	float:left;
-	line-height:1.4
+	line-height:1.4;
+	min-height: 240px;
 }
 
-.rslt-wrapper .rslt-column:nth-child(odd) { padding: 0 15px 0 0;}
 
-.rslt-wrapper .rslt-column:nth-child(even) { padding: 0 0 0 15px;}
 
-.rslt-wrapper .rsltItem-serv
+.rslt-wrapper-serv .rslt-column-serv:nth-child(odd) { padding: 0 15px 0 0;}
+
+.rslt-wrapper-serv .rslt-column-serv:nth-child(even) { padding: 0 0 0 15px;}
+
+.rslt-wrapper-serv .rsltItem-serv
 {
 	margin:0 0 30px 0;
 	color:#fff;
 }
 
-.rslt-wrapper .rsltItem-serv .infoCol{  width:100%;  margin:0 0 2px 0 ; background: rgb(112,112,110); /* Old browsers */
+.rslt-wrapper-serv .rsltItem-serv .infoCol{  width:100%;  margin:0 0 2px 0 ; background: rgb(112,112,110); /* Old browsers */
 
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 
@@ -50,7 +69,7 @@ div {
 .priceCol h3
 { font-size:1.5em; font-weight:500; }
 .priceCol h3 small {font-size:13px!important}
-.rslt-wrapper .rsltItem-serv h5 {font-size:.8em!important}
+.rslt-wrapper-serv .rsltItem-serv h5 {font-size:.8em!important}
 
 div.serv-details
 {
@@ -163,13 +182,13 @@ a.btn-send:hover{background-color:#94c11e}
 @media (max-width: 767px)
 {
 	label.rslt_check  { font-size:.75em; }
-		.rslt-wrapper .rslt-column 
+		.rslt-wrapper-serv .rslt-column-serv 
 	{
 		width:100%;
 		float:none;
 	}	
 	
-	.rslt-wrapper .rslt-column:nth-child(odd), .rslt-wrapper .rslt-column:nth-child(even) { padding: 0;}
+	.rslt-wrapper-serv .rslt-column-serv:nth-child(odd), .rslt-wrapper-serv .rslt-column-serv:nth-child(even) { padding: 0;}
 }
  
 /* Landscape phones and down */

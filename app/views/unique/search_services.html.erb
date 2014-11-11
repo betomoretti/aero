@@ -99,13 +99,15 @@
       <h1><%= @word %></h1>
 
 </header>
-
 <div class="content-wrapper">
+
+  <div class="rslt-wrapper-serv">
           
-            <div class="info-wrapper rslt-wrapper" id="content">
+            <div class="info-wrapper-serv rslt-wrapper-serv" id="content">
               
-            
-              <ul class="rslt-column">
+              
+              <ul class="rslt-column-serv">
+              <% unless @uniques.blank? %>
                   <% @uniques.each do | unique | %>
                     <!--  CONTENIDO QUE SER REPITE  -->
                     <li class="rsltItem-serv">
@@ -114,8 +116,8 @@
             
                         <div class="ttlCol">
                             <h2 alt="<%= unique.name %>" title="<%= unique.name %>">
-                              <% if unique.name.length > 27 %>
-                                <%= unique.name[0,27]+"..." %>
+                              <% if unique.name.length > 20 %>
+                                <%= unique.name[0,20]+"..." %>
                               <% else %>
                                 <%= unique.name %>
                               <% end %>
@@ -150,12 +152,14 @@
                         
                     </li><!-- /.rsltItem-serv -->
                     <% end %>
+                    <% end %>
+
                     <!--  CONTENIDO QUE SER REPITE  -->
-                    </ul><!-- /.rslt-column"-->
+                     </ul><!-- /.rslt-column"-->
+                    <ul class="rslt-column-serv">
+                    <% unless @uniques1.blank? %>
 
-
-                    <ul class="rslt-column">
-                  <% @uniques1.each do | unique1 | %>
+                      <% @uniques1.each do | unique1 | %>
                     <!--  CONTENIDO QUE SER REPITE  -->
                     <li class="rsltItem-serv">
                     
@@ -163,8 +167,8 @@
             
                         <div class="ttlCol">
                             <h2 alt="<%= unique1.name %>" title="<%= unique1.name %>">
-                              <% if unique1.name.length > 27 %>
-                                <%= unique1.name[0,27]+"..." %>
+                              <% if unique1.name.length > 20 %>
+                                <%= unique1.name[0,20]+"..." %>
                               <% else %>
                                 <%= unique1.name %>
                               <% end %>
@@ -199,18 +203,22 @@
                         
                     </li><!-- /.rsltItem-serv -->
                     <% end %>
+
                     <!--  CONTENIDO QUE SER REPITE  -->
+                    <% end %>
                     </ul><!-- /.rslt-column"-->
 
-
              </div>
-             <% unless @uniques.blank? %>
+              <% unless @uniques.blank? %>
+             
               <div class="action-wrapper">
                 <div id="spin"></div>
                 <a data-toggle="modal" data-target="#myModal" href="#" class="btn-send">ENVIAR POR MAIL</a>
               </div>
              <% end %>
         </div>
+        </div>
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -222,7 +230,7 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
     <script type="text/javascript" src="../../assets/minified/simple-expand.min.js"></script>
     <script type="text/javascript">
@@ -232,3 +240,4 @@
         });
     
   </script>
+        </div>

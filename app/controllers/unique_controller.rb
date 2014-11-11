@@ -60,8 +60,7 @@ class UniqueController < ApplicationController
         @uniques1 = results[1]
         @word = params[:word]
       end
-    else  
-      @uniques = []
+    else
       @word = "No hay resultados para tu búsqueda"
     end
   end

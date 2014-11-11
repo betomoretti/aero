@@ -13,7 +13,7 @@
     <div id="container">
     
       <div class="grilla resultados circuitos">
-        <div id="banner" style="background-image:url('<%= @country.country_photo.photo %>');">          
+        <div id="banner" style="background-image:url('<%= @country.country_photo.photo unless @country.country_photo.photo.blank? %>');">          
         <div id="information" >  
           
           <div class="data">

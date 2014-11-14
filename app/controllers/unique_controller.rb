@@ -55,10 +55,14 @@ class UniqueController < ApplicationController
         @id = params[:id_search]
         type = params[:type_search].camelize.constantize
         aux = type.find(@id).services.sort_by(&:category)
-        results = aux.each_slice(aux.count/2).to_a
-        @uniques = results[0]
-        @uniques1 = results[1]
-        @word = params[:word]
+        unless aux.empty?
+          results = aux.each_slice(aux.count/2).to_a
+          @uniques = results[0] 
+          @uniques1 ||= results[1]
+          @word = params[:word]
+        else
+          @word = "No hay resultados para tu búsqueda"
+        end
       end
     else
       @word = "No hay resultados para tu búsqueda"
@@ -73,32 +77,6 @@ class UniqueController < ApplicationController
 
   def destinations
     @countries = Country.unique_countries.uniq
-  end
-
-  def search
-    unless params[:word].blank?
-      if params[:id_search].blank?
-        if Area.exists?(name: params[:word])
-          @uniques = Area.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
-          @word = params[:word]
-        elsif Country.exists?(name: params[:word])
-          @uniques = Country.find_by(name: params[:word]).programs.uniq.sort_by{|u| u[:nights]}
-          @word = params[:word]
-        else  
-          @uniques = []
-          @word = "No hay resultados para tu búsqueda"
-        end
-      else  
-        @id = params[:id_search]
-        type = params[:type_search].camelize.constantize
-        @uniques = type.find(@id).programs.uniq.sort_by{|u| u[:nights]}
-        @word = params[:word]
-        @type_search = params[:type_search]
-      end
-    else  
-      @uniques = []
-      @word = "No hay resultados para tu búsqueda"
-    end
   end
 
   def show

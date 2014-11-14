@@ -13,7 +13,8 @@
             <option value="" disabled="disabled">Seleccione una opción...</option>
             <option value="Program">Circuitos</option>
             <option value="Service">Servicios</option>
-          </select>  
+          </select>
+          <%= hidden_field_tag :id_search  %>  
           <%= hidden_field_tag :type_search  %>
           <div class="button-input-div">
             <%= submit_tag "BUSCAR", :name => "searchBtn", class: "searchBtn" %>

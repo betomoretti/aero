@@ -6,6 +6,18 @@ class Service < ActiveRecord::Base
 	delegate :area, :to=>:destination
 	delegate :country, :to=>:destination
 
+	def self.categories
+		{
+			"TransportData" => "Transporte",
+			"AssistanceData"=> "Asistencia",
+			"CarData"       => "Auto",
+			"CruiseData"    => "Crucero",
+			"ExcursionData" => "Excursión",
+			"TrainData"     => "Tren",
+			"GenericData"   => "Genérico"
+		}
+	end
+  
 	def self.json_for_autocomplete(param)
 		countries = Country.filter_by_name_join_services(param).as_json.each{|c| c["type"]="Country"}
 		areas = Area.filter_by_name_join_services(param).as_json.each{|c| c["type"]="Area"}

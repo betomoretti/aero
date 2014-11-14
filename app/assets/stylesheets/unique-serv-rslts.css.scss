@@ -67,7 +67,7 @@ div {
 .priceCol {background-color:#94c11e; float:right; width:36%; border-left:4px solid black; height:100%; padding:8px 10px }
 
 .priceCol h3
-{ font-size:1.5em; font-weight:500; }
+{ font-size:1.5em; font-weight:500; margin-bottom: 15px;}
 .priceCol h3 small {font-size:13px!important}
 .rslt-wrapper-serv .rsltItem-serv h5 {font-size:.8em!important}
 
@@ -102,7 +102,7 @@ a.expander.expanded
 	background-position:left bottom;
 }
 
-div.serv-details > div.content > p {color:#000; font-size:.75em}
+div.serv-details > div.content > p {color:#000; font-size:0.85em}
 
 label.rslt_check  {
 	color:#000; float:right; font-size:.813em; padding:0; text-transform:none; font-weight:400;

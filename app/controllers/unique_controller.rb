@@ -36,13 +36,13 @@ class UniqueController < ApplicationController
     unless params[:word].blank?
       if params[:id_search].blank?
         if Area.exists?(name: params[:word])
-          aux = Area.uniques_services_by_area_name(params[:word])
+          aux = Area.uniques_services_by_area_name(params[:word]).sort_by(&:category)
           results = aux.each_slice(aux.count/2).to_a
           @uniques = results[0]
           @uniques1 = results[1]
           @word = params[:word]
         elsif Country.exists?(name: params[:word])
-          aux = Country.uniques_services_by_country_name(params[:word])
+          aux = Country.uniques_services_by_country_name(params[:word]).sort_by(&:category)
           results = aux.each_slice(aux.count/2).to_a
           @uniques = results[0]
           @uniques1 = results[1]
@@ -54,7 +54,7 @@ class UniqueController < ApplicationController
       else  
         @id = params[:id_search]
         type = params[:type_search].camelize.constantize
-        aux = type.find(@id).services
+        aux = type.find(@id).services.sort_by(&:category)
         results = aux.each_slice(aux.count/2).to_a
         @uniques = results[0]
         @uniques1 = results[1]

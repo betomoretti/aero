@@ -116,17 +116,16 @@
             
                         <div class="ttlCol">
                             <h2 alt="<%= unique.name %>" title="<%= unique.name %>">
-                              <% if unique.name.length > 34 %>
-                                <%= unique.name[0,34]+"..." %>
+                              <% if unique.name.length > 25 %>
+                                <%= unique.name[0,25]+"..." %>
                               <% else %>
                                 <%= unique.name %>
                               <% end %>
                             </h2>
-                            <span><%= unique.destination.name %></span>
+                            <span><%= unique.destination.name %></span><span> - <%= Service.categories[unique.category] %></span>
                         </div>
                         <div class="priceCol">
-                            <h3><%= unique.country.coin.symbol %> <%= parse_price(unique.get_price_with_markup) %></h3>
-                            <h5>CHD <%= unique.country.coin.symbol %> <%= parse_price(unique.get_child_price_with_markup) %> </h5>
+                            <h3><%= unique.country.coin.symbol %> <%= parse_price(unique.get_price_with_markup.round.to_i) %></h3>
                         </div><!-- /.priceCol -->
                         <br class="clearfix" />
                       </div><!-- /.infoCol -->
@@ -142,8 +141,8 @@
                             <div class="content">
                                 <p><%= unique.name%></p>
                                 <p><%= unique.destination.name%></p>
-                                <p><%= unique.country.coin.symbol %> <%=  parse_price(unique.get_price_with_markup) %> + <%= parse_price(unique.get_tax_integer)  %> Imp</p>
-                                <p>CHD <%= unique.country.coin.symbol %> <%= parse_price(unique.get_child_price_with_markup) %> + <%= parse_price(unique.get_tax_child_integer)  %> Imp</p>
+                                <p><%= unique.country.coin.symbol %> <%=  parse_price(unique.get_price_with_markup.round.to_i) %> + <%= parse_price(unique.get_tax_integer)  %> Imp</p>
+                                <p>CHD <%= unique.country.coin.symbol %> <%= parse_price(unique.get_child_price_with_markup.round.to_i) %> + <%= parse_price(unique.get_tax_child_integer)  %> Imp</p>
                                 <p><%= unique.description %></p>
                             </div><!-- /.content -->
                             
@@ -167,17 +166,16 @@
             
                         <div class="ttlCol">
                             <h2 alt="<%= unique1.name %>" title="<%= unique1.name %>">
-                              <% if unique1.name.length > 34 %>
-                                <%= unique1.name[0,34]+"..." %>
+                              <% if unique1.name.length > 25 %>
+                                <%= unique1.name[0,25]+"..." %>
                               <% else %>
                                 <%= unique1.name %>
                               <% end %>
                             </h2>
-                            <span><%= unique1.destination.name %></span>
+                            <span><%= unique1.destination.name %></span><span> - <%= Service.categories[unique1.category] %></span>
                         </div>
                         <div class="priceCol">
-                            <h3><%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_price_with_markup) %></h3>
-                            <h5>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup) %> </h5>
+                            <h3><%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_price_with_markup.round.to_i) %></h3>
                         </div><!-- /.priceCol -->
                         <br class="clearfix" />
                       </div><!-- /.infoCol -->
@@ -193,8 +191,8 @@
                             <div class="content">
                                 <p><%= unique1.name%></p>
                                 <p><%= unique1.destination.name%></p>
-                                <p><%= unique1.country.coin.symbol %> <%=  parse_price(unique1.get_price_with_markup) %> + <%= parse_price(unique1.get_tax_integer)  %> Imp</p>
-                                <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup) %> + <%= parse_price(unique1.get_tax_child_integer)  %> Imp</p>
+                                <p><%= unique1.country.coin.symbol %> <%=  parse_price(unique1.get_price_with_markup.round.to_i) %> + <%= parse_price(unique1.get_tax_integer)  %> Imp</p>
+                                <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup.round.to_i) %> + <%= parse_price(unique1.get_tax_child_integer)  %> Imp</p>
                                 <p><%= unique1.description %></p>
                             </div><!-- /.content -->
                             

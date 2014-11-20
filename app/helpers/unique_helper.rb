@@ -44,4 +44,9 @@ module UniqueHelper
 		if result == '0' then result = '' end
 		return result
 	end
+
+	def coin_code(symbol)
+		codes = {'€'=>'EUR', '$' => 'PES', 'USD' => 'USD'}
+		codes[symbol]
+	end
 end

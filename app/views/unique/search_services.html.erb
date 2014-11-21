@@ -125,7 +125,7 @@
                         <!-- <span><%# unique.destination.name %></span><span> - <%# Service.categories[unique.category] %></span> -->
                     </div>
                     <div class="priceCol">
-                        <h3><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price('%.2f' %  unique.get_price_with_markup) %></h3>
+                        <h3><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price(unique.get_price_with_markup.to_i.round(0)) %></h3>
                     </div><!-- /.priceCol -->
                     <br class="clearfix" />
                   </div><!-- /.infoCol -->
@@ -141,9 +141,10 @@
                         <div class="content">
                             <p><%= unique.name%></p>
                             <p><%= unique.destination.name%></p>
-                            <p><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price('%.2f' %  unique.get_price_with_markup) %> + <%= parse_price('%.2f' %  unique.get_tax_integer)  %> Imp</p>
-                            <p>CHD <%= coin_code(unique.country.coin.symbol) %> <%= parse_price('%.2f' %  unique.get_child_price_with_markup) %> + <%= parse_price('%.2f' %  unique.get_tax_child_integer)  %> Imp</p>
+                            <p><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price(unique.get_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique.get_tax_integer)  %> Imp</p>
+                            <p>CHD <%= coin_code(unique.country.coin.symbol) %> <%= parse_price(unique.get_child_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique.get_tax_child_integer)  %> Imp</p>
                             <p><%= unique.description %></p>
+                            <p>No incluye gastos admininistrativos 2.2%</p>
                         </div><!-- /.content -->
                         
                     </div><!-- /.serv-details -->
@@ -175,7 +176,7 @@
                         <!-- <span><%# unique1.destination.name %></span><span> - <%# Service.categories[unique1.category] %></span> -->
                     </div>
                     <div class="priceCol">
-                        <h3><%= coin_code(unique1.country.coin.symbol) %> <%= parse_price('%.2f' %  unique1.get_price_with_markup) %></h3>
+                        <h3><%= coin_code(unique1.country.coin.symbol) %> <%= parse_price(unique1.get_price_with_markup.to_i.round(0)) %></h3>
                     </div><!-- /.priceCol -->
                     <br class="clearfix" />
                   </div><!-- /.infoCol -->
@@ -191,9 +192,10 @@
                         <div class="content">
                             <p><%= unique1.name%></p>
                             <p><%= unique1.destination.name%></p>
-                            <p><%= coin_code(unique1.country.coin.symbol) %> <%=  parse_price('%.2f' %  unique1.get_price_with_markup) %> + <%= parse_price('%.2f' %  unique1.get_tax_integer)  %> Imp</p>
-                            <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price('%.2f' % unique1.get_child_price_with_markup) %> + <%= parse_price('%.2f' %  unique1.get_tax_child_integer)  %> Imp</p>
+                            <p><%= coin_code(unique1.country.coin.symbol) %> <%=  parse_price(unique1.get_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique1.get_tax_integer)  %> Imp</p>
+                            <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique1.get_tax_child_integer)  %> Imp</p>
                             <p><%= unique1.description %></p>
+                            <p>No incluye gastos admininistrativos 2.2%</p>
                         </div><!-- /.content -->
                         
                     </div><!-- /.serv-details -->

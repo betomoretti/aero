@@ -3,8 +3,9 @@
 	<h4>Destino:</h4>
 	<p><%= service.destination.name%></p>
 	<h4> Precios: </h4>
-	<p><%= service.country.coin.symbol %> <%=  parse_price(service.get_price_with_markup) %></p>
-	<p>CHD <%= service.country.coin.symbol %> <%= parse_price(service.get_child_price_with_markup) %></p>
+	<p><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price(unique.get_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique.get_tax_integer)  %> Imp</p>
+	<p>CHD <%= coin_code(unique.country.coin.symbol) %> <%= parse_price(unique.get_child_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique.get_tax_child_integer)  %> Imp</p>
 	<h4> Descripción: </h4>
 	<p><%= service.description %></p>
+	<p>No incluye iva 2% ni gastos admininistrativos 2.2%</p>
 <% end %>

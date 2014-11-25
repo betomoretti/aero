@@ -1,4 +1,4 @@
-    <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){ 
     // console.log("asdasda");
        $('.head').backstretch([
@@ -15,7 +15,11 @@
       ], {duration: 3000, fade: 750});
 
       $("#filter").keyup(function () {
-        $('div.rsltItem').not('[data-search^='+$(this).val()+']').hide();
+        $('div.rsltItem').each(function (index) {
+          if ($(this).attr('data-search').indexOf($("#filter").val().toLowerCase()) < 0) {
+            $(this).hide();
+          }
+        });
         if ($(this).val() == '') {
           $('div.rsltItem').show();
         };
@@ -31,7 +35,7 @@
 
 <div class="content-wrapper">
   <div class="rslt-wrapper" id="content">
-        <%= label_tag(:filter, "Filtro") %>
+        <%= label_tag(:filter, "Filtrado por nombre") %>
         <%= text_field_tag(:filter) %>
 
 

@@ -37,15 +37,19 @@ class UniqueController < ApplicationController
       if params[:id_search].blank?
         if Area.exists?(name: params[:word])
           aux = Area.uniques_services_by_area_name(params[:word]).sort_by(&:category)
-          results = aux.each_slice(aux.count/2).to_a
-          @uniques = results[0]
-          @uniques1 = results[1]
+          if aux.count/2 >0 
+            results = aux.each_slice(aux.count/2).to_a
+            @uniques = results[0]
+            @uniques1 = results[1]
+          end
           @word = params[:word]
         elsif Country.exists?(name: params[:word])
           aux = Country.uniques_services_by_country_name(params[:word]).sort_by(&:category)
-          results = aux.each_slice(aux.count/2).to_a
-          @uniques = results[0]
-          @uniques1 = results[1]
+          if aux.count/2 >0 
+            results = aux.each_slice(aux.count/2).to_a
+            @uniques = results[0]
+            @uniques1 = results[1]
+          end
           @word = params[:word]
         else  
           results = []

@@ -5,16 +5,16 @@ class UniqueController < ApplicationController
   def index
     render :layout => 'application'  
   end
-
+    
   def search_circuits
     unless params[:word].blank?
       if params[:id_search].blank?
         if Area.exists?(name: params[:word])
           @uniques = Area.uniques_programs_by_area_name(params[:word])
-          @word = params[:word]
+          @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
         elsif Country.exists?(name: params[:word])
           @uniques = Country.uniques_programs_by_country_name(params[:word])
-          @word = params[:word]
+          @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
         else  
           @uniques = []
           @word = "No hay resultados para tu búsqueda"
@@ -23,7 +23,7 @@ class UniqueController < ApplicationController
         @id = params[:id_search]
         type = params[:type_search].camelize.constantize
         @uniques = type.find(@id).programs.uniq.sort_by{|u| u[:nights]}
-        @word = params[:word]
+        @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
         @type_search = params[:type_search]
       end
     else  
@@ -37,16 +37,24 @@ class UniqueController < ApplicationController
       if params[:id_search].blank?
         if Area.exists?(name: params[:word])
           aux = Area.uniques_services_by_area_name(params[:word]).sort_by(&:category)
-          results = aux.each_slice(aux.count/2).to_a
-          @uniques = results[0]
-          @uniques1 = results[1]
-          @word = params[:word]
+          if aux.count/2 >0 
+            results = aux.each_slice(aux.count/2).to_a
+            @uniques = results[0]
+            @uniques1 = results[1]
+            @word = params[:word]
+          else
+            @word = "No hay resultados para tu búsqueda"
+          end
         elsif Country.exists?(name: params[:word])
           aux = Country.uniques_services_by_country_name(params[:word]).sort_by(&:category)
-          results = aux.each_slice(aux.count/2).to_a
-          @uniques = results[0]
-          @uniques1 = results[1]
-          @word = params[:word]
+          if aux.count/2 >0 
+            results = aux.each_slice(aux.count/2).to_a
+            @uniques = results[0]
+            @uniques1 = results[1]            
+            @word = params[:word]
+          else
+            @word = "No hay resultados para tu búsqueda"
+          end
         else  
           results = []
           @word = "No hay resultados para tu búsqueda"

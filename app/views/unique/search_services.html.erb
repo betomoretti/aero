@@ -103,132 +103,134 @@
 
   <div class="rslt-wrapper-serv">
           
-            <div class="info-wrapper-serv rslt-wrapper-serv" id="content">
-              
-              
-              <ul class="rslt-column-serv">
-              <% unless @uniques.blank? %>
-                  <% @uniques.each do | unique | %>
-                    <!--  CONTENIDO QUE SER REPITE  -->
-                    <li class="rsltItem-serv">
-                    
-                      <div class="infoCol">
-            
-                        <div class="ttlCol">
-                            <h2 alt="<%= unique.name %>" title="<%= unique.name %>">
-                              <% if unique.name.length > 25 %>
-                                <%= unique.name[0,25]+"..." %>
-                              <% else %>
-                                <%= unique.name %>
-                              <% end %>
-                            </h2>
-                            <span><%= unique.destination.name %></span><span> - <%= Service.categories[unique.category] %></span>
+        <div class="info-wrapper-serv rslt-wrapper-serv" id="content">
+          
+          
+          <ul class="rslt-column-serv">
+          <% unless @uniques.blank? %>
+              <% @uniques.each do | unique | %>
+                <!--  CONTENIDO QUE SER REPITE  -->
+                <li class="rsltItem-serv">
+                
+                  <div class="infoCol">
+        
+                    <div class="ttlCol">
+                        <h2 alt="<%= unique.name %>" title="<%= unique.name %>">
+                          <%# if unique.name.length > 25 %>
+                            <%# unique.name[0,25]+"..." %>
+                          <%# else %>
+                            <%= unique.name %>
+                          <%# end %>
+                        </h2>
+                        <!-- <span><%# unique.destination.name %></span><span> - <%# Service.categories[unique.category] %></span> -->
+                    </div>
+                    <div class="priceCol">
+                        <h3><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price(unique.get_price_with_markup.to_i.round(0)) %></h3>
+                    </div><!-- /.priceCol -->
+                    <br class="clearfix" />
+                  </div><!-- /.infoCol -->
+                              
+                    <div class="serv-details collapsible collapse-close" id="rsltDetail0">
+                        <div><a class="expander" href="#">VER MÁS</a>
+                          <input name="<%= "rslt-check"+unique.id.to_s %>" data-id="<%= unique.id.to_s %>" id="<%= "rslt-check"+unique.id.to_s %>" value="0" type="checkbox" />
+                            <label class="rslt_check" for="<%= "rslt-check"+unique.id.to_s %>">
+                                Seleccione para enviar por mail
+                            </label>
                         </div>
-                        <div class="priceCol">
-                            <h3><%= unique.country.coin.symbol %> <%= parse_price(unique.get_price_with_markup.round.to_i) %></h3>
-                        </div><!-- /.priceCol -->
-                        <br class="clearfix" />
-                      </div><!-- /.infoCol -->
-                                  
-                        <div class="serv-details collapsible collapse-close" id="rsltDetail0">
-                            <div><a class="expander" href="#">VER MÁS</a>
-                              <input name="<%= "rslt-check"+unique.id.to_s %>" data-id="<%= unique.id.to_s %>" id="<%= "rslt-check"+unique.id.to_s %>" value="0" type="checkbox" />
-                                <label class="rslt_check" for="<%= "rslt-check"+unique.id.to_s %>">
-                                    Seleccione para enviar por mail
-                                </label>
-                            </div>
-                            
-                            <div class="content">
-                                <p><%= unique.name%></p>
-                                <p><%= unique.destination.name%></p>
-                                <p><%= unique.country.coin.symbol %> <%=  parse_price(unique.get_price_with_markup.round.to_i) %> + <%= parse_price(unique.get_tax_integer)  %> Imp</p>
-                                <p>CHD <%= unique.country.coin.symbol %> <%= parse_price(unique.get_child_price_with_markup.round.to_i) %> + <%= parse_price(unique.get_tax_child_integer)  %> Imp</p>
-                                <p><%= unique.description %></p>
-                            </div><!-- /.content -->
-                            
-                        </div><!-- /.serv-details -->
-                            
                         
-                    </li><!-- /.rsltItem-serv -->
-                    <% end %>
-                    <% end %>
-
-                    <!--  CONTENIDO QUE SER REPITE  -->
-                     </ul><!-- /.rslt-column"-->
-                    <ul class="rslt-column-serv">
-                    <% unless @uniques1.blank? %>
-
-                      <% @uniques1.each do | unique1 | %>
-                    <!--  CONTENIDO QUE SER REPITE  -->
-                    <li class="rsltItem-serv">
+                        <div class="content">
+                            <p><%= unique.name%></p>
+                            <p><%= unique.destination.name%></p>
+                            <p><%= coin_code(unique.country.coin.symbol) %> <%=  parse_price(unique.get_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique.get_tax_integer)  %> Imp</p>
+                            <p>CHD <%= coin_code(unique.country.coin.symbol) %> <%= parse_price(unique.get_child_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique.get_tax_child_integer)  %> Imp</p>
+                            <p><%= unique.description %></p>
+                            <p>No incluye gastos admininistrativos 2.2%</p>
+                        </div><!-- /.content -->
+                        
+                    </div><!-- /.serv-details -->
+                        
                     
-                      <div class="infoCol">
-            
-                        <div class="ttlCol">
-                            <h2 alt="<%= unique1.name %>" title="<%= unique1.name %>">
-                              <% if unique1.name.length > 25 %>
-                                <%= unique1.name[0,25]+"..." %>
-                              <% else %>
-                                <%= unique1.name %>
-                              <% end %>
-                            </h2>
-                            <span><%= unique1.destination.name %></span><span> - <%= Service.categories[unique1.category] %></span>
+                </li><!-- /.rsltItem-serv -->
+                <% end %>
+                <% end %>
+
+                <!--  CONTENIDO QUE SER REPITE  -->
+                 </ul><!-- /.rslt-column"-->
+                <ul class="rslt-column-serv">
+                <% unless @uniques1.blank? %>
+
+                  <% @uniques1.each do | unique1 | %>
+                <!--  CONTENIDO QUE SER REPITE  -->
+                <li class="rsltItem-serv">
+                
+                  <div class="infoCol">
+        
+                    <div class="ttlCol">
+                        <h2 alt="<%= unique1.name %>" title="<%= unique1.name %>">
+                          <%# if unique1.name.length > 25 %>
+                            <%# unique1.name[0,25]+"..." %>
+                          <%# else %>
+                            <%= unique1.name %>
+                          <%# end %>
+                        </h2>
+                        <!-- <span><%# unique1.destination.name %></span><span> - <%# Service.categories[unique1.category] %></span> -->
+                    </div>
+                    <div class="priceCol">
+                        <h3><%= coin_code(unique1.country.coin.symbol) %> <%= parse_price(unique1.get_price_with_markup.to_i.round(0)) %></h3>
+                    </div><!-- /.priceCol -->
+                    <br class="clearfix" />
+                  </div><!-- /.infoCol -->
+                              
+                    <div class="serv-details collapsible collapse-close" id="rsltDetail0">
+                        <div><a class="expander" href="#">VER MÁS</a>
+                          <input name="<%= "rslt-check"+unique1.id.to_s %>" data-id="<%= unique1.id.to_s %>" id="<%= "rslt-check"+unique1.id.to_s %>" value="0" type="checkbox" />
+                            <label class="rslt_check" for="<%= "rslt-check"+unique1.id.to_s %>">
+                                Seleccione para enviar por mail
+                            </label>
                         </div>
-                        <div class="priceCol">
-                            <h3><%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_price_with_markup.round.to_i) %></h3>
-                        </div><!-- /.priceCol -->
-                        <br class="clearfix" />
-                      </div><!-- /.infoCol -->
-                                  
-                        <div class="serv-details collapsible collapse-close" id="rsltDetail0">
-                            <div><a class="expander" href="#">VER MÁS</a>
-                              <input name="<%= "rslt-check"+unique1.id.to_s %>" data-id="<%= unique1.id.to_s %>" id="<%= "rslt-check"+unique1.id.to_s %>" value="0" type="checkbox" />
-                                <label class="rslt_check" for="<%= "rslt-check"+unique1.id.to_s %>">
-                                    Seleccione para enviar por mail
-                                </label>
-                            </div>
-                            
-                            <div class="content">
-                                <p><%= unique1.name%></p>
-                                <p><%= unique1.destination.name%></p>
-                                <p><%= unique1.country.coin.symbol %> <%=  parse_price(unique1.get_price_with_markup.round.to_i) %> + <%= parse_price(unique1.get_tax_integer)  %> Imp</p>
-                                <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup.round.to_i) %> + <%= parse_price(unique1.get_tax_child_integer)  %> Imp</p>
-                                <p><%= unique1.description %></p>
-                            </div><!-- /.content -->
-                            
-                        </div><!-- /.serv-details -->
-                            
                         
-                    </li><!-- /.rsltItem-serv -->
-                    <% end %>
+                        <div class="content">
+                            <p><%= unique1.name%></p>
+                            <p><%= unique1.destination.name%></p>
+                            <p><%= coin_code(unique1.country.coin.symbol) %> <%=  parse_price(unique1.get_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique1.get_tax_integer)  %> Imp</p>
+                            <p>CHD <%= unique1.country.coin.symbol %> <%= parse_price(unique1.get_child_price_with_markup.to_i.round(0)) %> + <%= parse_price('%.2f' %  unique1.get_tax_child_integer)  %> Imp</p>
+                            <p><%= unique1.description %></p>
+                            <p>No incluye gastos admininistrativos 2.2%</p>
+                        </div><!-- /.content -->
+                        
+                    </div><!-- /.serv-details -->
+                        
+                    
+                </li><!-- /.rsltItem-serv -->
+                <% end %>
 
-                    <!--  CONTENIDO QUE SER REPITE  -->
-                    <% end %>
-                    </ul><!-- /.rslt-column"-->
+                <!--  CONTENIDO QUE SER REPITE  -->
+                <% end %>
+                </ul><!-- /.rslt-column"-->
 
-             </div>
-              <% unless @uniques.blank? %>
-             
-              <div class="action-wrapper">
-                <div id="spin"></div>
-                <a data-toggle="modal" data-target="#myModal" href="#" class="btn-send">ENVIAR POR MAIL</a>
-              </div>
-             <% end %>
-        </div>
-        </div>
-
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <%= label_tag(:email, "Email:", class: "label-modal") %>
-                <%= email_field(:email, nil , :placeholder => 'ejemplo@ejemplo.com', class: "input-modal") %>
-                <span id="modal-spin" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
-                <%= submit_tag("Enviar", id: "submit-modal" ,class: "submit-modal") %>
-              </div>
-            </div>
+         </div>
+          <% unless @uniques.blank? %>
+         
+          <div class="action-wrapper">
+            <div id="spin"></div>
+            <a data-toggle="modal" data-target="#myModal" href="#" class="btn-send">ENVIAR POR MAIL</a>
           </div>
+         <% end %>
+    </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <%= label_tag(:email, "Email:", class: "label-modal") %>
+            <%= email_field(:email, nil , :placeholder => 'ejemplo@ejemplo.com', class: "input-modal") %>
+            <span id="modal-spin" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
+            <%= submit_tag("Enviar", id: "submit-modal" ,class: "submit-modal") %>
           </div>
+        </div>
+      </div>
+      </div>
 
     <script type="text/javascript" src="../../assets/minified/simple-expand.min.js"></script>
     <script type="text/javascript">

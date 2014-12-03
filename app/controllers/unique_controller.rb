@@ -22,7 +22,7 @@ class UniqueController < ApplicationController
       else  
         @id = params[:id_search]
         type = params[:type_search].camelize.constantize
-        @uniques = type.find(@id).programs.uniq.sort_by{|u| u[:nights]}
+        @uniques = type.find(@id).programs.where("programs.expiration_date > ?", Date.today).uniq.sort_by{|u| u[:nights]}
         @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
         @type_search = params[:type_search]
       end

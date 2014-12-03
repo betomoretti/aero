@@ -37,20 +37,42 @@ class UniqueController < ApplicationController
       if params[:id_search].blank?
         if Area.exists?(name: params[:word])
           aux = Area.uniques_services_by_area_name(params[:word]).sort_by(&:category)
-          if aux.count/2 >0 
-            results = aux.each_slice(aux.count/2).to_a
-            @uniques = results[0]
-            @uniques1 = results[1]
+          unless aux.empty?
+            if aux.count == 1
+              @uniques = [aux.first]
+              @uniques1 = nil
+            elsif aux.count % 2 == 1
+              processed = aux.each_slice(aux.count/2).to_a
+              processed[0][processed[0].count] = processed[2][0]
+              results = processed
+              @uniques = results[0] 
+              @uniques1 = results[1]
+            else
+              results = aux.each_slice(aux.count/2).to_a
+              @uniques = results[0] 
+              @uniques1 = results[1]              
+            end
             @word = params[:word]
           else
             @word = "No hay resultados para tu búsqueda"
           end
         elsif Country.exists?(name: params[:word])
           aux = Country.uniques_services_by_country_name(params[:word]).sort_by(&:category)
-          if aux.count/2 >0 
-            results = aux.each_slice(aux.count/2).to_a
-            @uniques = results[0]
-            @uniques1 = results[1]            
+          unless aux.empty?
+            if aux.count == 1
+              @uniques = [aux.first]
+              @uniques1 = nil
+            elsif aux.count % 2 == 1
+              processed = aux.each_slice(aux.count/2).to_a
+              processed[0][processed[0].count] = processed[2][0]
+              results = processed
+              @uniques = results[0] 
+              @uniques1 = results[1]
+            else
+              results = aux.each_slice(aux.count/2).to_a
+              @uniques = results[0] 
+              @uniques1 = results[1]              
+            end
             @word = params[:word]
           else
             @word = "No hay resultados para tu búsqueda"
@@ -62,11 +84,22 @@ class UniqueController < ApplicationController
       else  
         @id = params[:id_search]
         type = params[:type_search].camelize.constantize
-        aux = type.find(@id).services.sort_by(&:category)
+        aux = type.find(@id).services.sort_by(&:category).to_a
         unless aux.empty?
-          results = aux.each_slice(aux.count/2).to_a
-          @uniques = results[0] 
-          @uniques1 ||= results[1]
+          if aux.count == 1
+            @uniques = [aux.first]
+            @uniques1 = nil
+          elsif aux.count % 2 == 1
+            processed = aux.each_slice(aux.count/2).to_a
+            processed[0][processed[0].count] = processed[2][0]
+            results = processed
+            @uniques = results[0] 
+            @uniques1 = results[1]
+          else
+            results = aux.each_slice(aux.count/2).to_a
+            @uniques = results[0] 
+            @uniques1 = results[1]              
+          end
           @word = params[:word]
         else
           @word = "No hay resultados para tu búsqueda"

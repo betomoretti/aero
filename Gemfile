@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'meta_request'
+  gem 'rack-mini-profiler'
+  gem 'awesome_print'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

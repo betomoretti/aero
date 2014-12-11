@@ -5,109 +5,26 @@ class UniqueController < ApplicationController
   def index
     render :layout => 'application'  
   end
-    
+  
   def search_circuits
-    unless params[:word].blank?
-      if params[:id_search].blank?
-        if Area.exists?(name: params[:word])
-          @uniques = Area.uniques_programs_by_area_name(params[:word])
-          @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
-        elsif Country.exists?(name: params[:word])
-          @uniques = Country.uniques_programs_by_country_name(params[:word])
-          @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
-        else  
-          @uniques = []
-          @word = "No hay resultados para tu búsqueda"
-        end
-      else  
-        @id = params[:id_search]
-        type = params[:type_search].camelize.constantize
-        @uniques = type.find(@id).programs.where("programs.expiration_date > ?", Date.today).uniq.sort_by{|u| u[:nights]}
-        @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
-        @type_search = params[:type_search]
-      end
-    else  
-      @uniques = []
-      @word = "No hay resultados para tu búsqueda"
-    end
+    @form = SearchForm.new(word: params[:word],option_select: params[:option_select],id_search: params[:id_search],type_search: params[:type_search])
+    @uniques = @form.search_circuits
+    @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
+  end
+  
+  def search_output_groups
+    @form = SearchForm.new(word: params[:word],option_select: params[:option_select],id_search: params[:id_search],type_search: params[:type_search])
+    @uniques = @form.search_output_groups
+    @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
+    render "search_circuits"
   end
 
   def search_services
-    unless params[:word].blank?
-      if params[:id_search].blank?
-        if Area.exists?(name: params[:word])
-          aux = Area.uniques_services_by_area_name(params[:word]).sort_by(&:category)
-          unless aux.empty?
-            if aux.count == 1
-              @uniques = [aux.first]
-              @uniques1 = nil
-            elsif aux.count % 2 == 1
-              processed = aux.each_slice(aux.count/2).to_a
-              processed[0][processed[0].count] = processed[2][0]
-              results = processed
-              @uniques = results[0] 
-              @uniques1 = results[1]
-            else
-              results = aux.each_slice(aux.count/2).to_a
-              @uniques = results[0] 
-              @uniques1 = results[1]              
-            end
-            @word = params[:word]
-          else
-            @word = "No hay resultados para tu búsqueda"
-          end
-        elsif Country.exists?(name: params[:word])
-          aux = Country.uniques_services_by_country_name(params[:word]).sort_by(&:category)
-          unless aux.empty?
-            if aux.count == 1
-              @uniques = [aux.first]
-              @uniques1 = nil
-            elsif aux.count % 2 == 1
-              processed = aux.each_slice(aux.count/2).to_a
-              processed[0][processed[0].count] = processed[2][0]
-              results = processed
-              @uniques = results[0] 
-              @uniques1 = results[1]
-            else
-              results = aux.each_slice(aux.count/2).to_a
-              @uniques = results[0] 
-              @uniques1 = results[1]              
-            end
-            @word = params[:word]
-          else
-            @word = "No hay resultados para tu búsqueda"
-          end
-        else  
-          results = []
-          @word = "No hay resultados para tu búsqueda"
-        end
-      else  
-        @id = params[:id_search]
-        type = params[:type_search].camelize.constantize
-        aux = type.find(@id).services.sort_by(&:category).to_a
-        unless aux.empty?
-          if aux.count == 1
-            @uniques = [aux.first]
-            @uniques1 = nil
-          elsif aux.count % 2 == 1
-            processed = aux.each_slice(aux.count/2).to_a
-            processed[0][processed[0].count] = processed[2][0]
-            results = processed
-            @uniques = results[0] 
-            @uniques1 = results[1]
-          else
-            results = aux.each_slice(aux.count/2).to_a
-            @uniques = results[0] 
-            @uniques1 = results[1]              
-          end
-          @word = params[:word]
-        else
-          @word = "No hay resultados para tu búsqueda"
-        end
-      end
-    else
-      @word = "No hay resultados para tu búsqueda"
-    end
+    @form = SearchForm.new(word: params[:word],option_select: params[:option_select],id_search: params[:id_search],type_search: params[:type_search])
+    results = @form.search_services
+    @uniques = results[0] 
+    @uniques1 = results[1] 
+    @word = !@uniques.nil? && @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
   end
 
   def info

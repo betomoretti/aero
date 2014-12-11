@@ -3,12 +3,13 @@
     <div class="logo"></div></a>
       <%= form_tag('/search/circuits', :method => "get", id: "searchForm") do %>
           <%= text_field_tag 'word',nil, id: "search-input", placeholder: "Ingresá tu ciudad/pais de busqueda", class: "inptsearch" %>
+          <select id="option_select" name="option_select" class="dropdown" required>
+            <option value="">Seleccione una opción...</option>
+            <option value="Program">Circuitos</option>
+            <option value="Service">Servicios</option>
+            <option value="OutputGroups">Salidas grupales</option>
+          </select> 
           <%= hidden_field_tag :id_search  %>
-            <select id="program_or_service" name="program_or_service" class="dropdown" required>
-              <option value="" disabled="disabled">Seleccione una opción...</option>
-              <option value="Program">Circuitos</option>
-              <option value="Service">Servicios</option>
-            </select> 
           <%= hidden_field_tag :type_search  %>
             <%= submit_tag "BUSCAR", :name => "searchBtn", class: "searchBtn" %>
       <% end %>

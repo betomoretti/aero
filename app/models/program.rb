@@ -9,7 +9,8 @@ class Program < ActiveRecord::Base
   has_many :countries, through: :areas
   belongs_to :end_area , :class_name => 'Area', :foreign_key => 'end_area_id'
 
-  scope :uniques, -> { where(category_program_id: CategoryProgram.unique.id, visible: 1)}
+  scope :uniques, -> { where(category_program_id: CategoryProgram.unique.id)}
+  scope :output_groups, -> {where(output_group: true)}
 
   def self.json_for_autocomplete(param)
     countries = Country.filter_by_name_join_programs(param).as_json.each{|c| c["type"]="Country"}

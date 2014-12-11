@@ -25,47 +25,50 @@
 //= require spin.min
 
 var ready;
+
 ready = (function() {
 	if (window.location.pathname == "/") {
 		$('div.dropdown').addClass('index');
 	};
 
+	$('form#searchForm').on('submit', function () {
+		$('form#searchForm .dropdown').css('border-color','white');
+	});
 
+	// Agrega informacion para que valide el select solo despues de que se intento submitear
     $('.searchBtn').on('click', function () {
     	$('form#searchForm .dropdown').css('border-color','red');
     	$('form#searchForm .dropdown').attr('data-require','true');
     });
 
-
 	// Cambia el action del formulario dependiendo si van a buscarse servicios o circuitos. Toma el valor del select
-	$("#program_or_service").on('change',(function(){
+	$("#option_select").on('change',function(){
 			
-			value = this.value;
+		var paths = {
+			"Service" :      "/search/services",
+			"Program" :      "/search/circuits",
+			"OutputGroups" : "/search/output_groups"
+		} 
+		var value = this.value;
 
-			if ($('form#searchForm .dropdown').attr('data-require') == 'true' && value != "") {
-				$('form#searchForm .dropdown').css('border-color','green');
-			}else if ($('form#searchForm .dropdown').attr('data-require') == 'true' && value == ""){
-				$('form#searchForm .dropdown').css('border-color','red');
-			}
-			
-			if (value == "Service") {
-				$("#searchForm").attr('action', '/search/services')
-			}else{
-				$("#searchForm").attr('action', '/search/circuits')
-			};
-		})
-	);
+		if ($('form#searchForm .dropdown').attr('data-require') == 'true' && value != "") {
+			$('form#searchForm .dropdown').css('border-color','green');
+		}else if ($('form#searchForm .dropdown').attr('data-require') == 'true' && value == ""){
+			$('form#searchForm .dropdown').css('border-color','red');
+		}
+
+		$("#searchForm").attr('action', paths[value]);
+	});
 
 
 	// Autocomplete
     $("#search-input").autocomplete({
 		source: function(request, response) {
-	        $.	ajax({
+	        $.ajax({
 	            url: '/unique/autocomplete.json',
 	            dataType: "json",
 	            data: {
-	                term : request.term,
-	                program_or_service: $("#program_or_service").val()
+	                term : request.term
 	            },
 	            success: function(data) {
 	                response(data);
@@ -75,6 +78,7 @@ ready = (function() {
 		minLength: 3,
 		focus: function( event, ui ) {
 	        $( "#search-input" ).val( ui.item.name );
+	        
 	        return false;
 	    },
 		select: function( event, ui ) {
@@ -84,11 +88,10 @@ ready = (function() {
 	 
 	        return false;
 	    }
-	    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-	      return $( "<li>" ).append( "<a>" + item.name + "</a>" ).appendTo( ul );
-	    };
-	});
-// });
+    }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" ).append( "<a>" + item.name + "</a>" ).appendTo( ul );
+    };
+});
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

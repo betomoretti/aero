@@ -83,6 +83,13 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Error Unique] ",
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{marianomoretti.87@gmail.com, guido.collino@aero.tur.ar}
+  }
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',

@@ -18,5 +18,7 @@
 /config/database.yml
 /public/assets/*
 
+/bin/wkhtmltopdf
+
 .ruby-gemset
 .ruby-version

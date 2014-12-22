@@ -41,7 +41,6 @@ gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
 
 # pdf gems
-gem 'wkhtmltopdf'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 

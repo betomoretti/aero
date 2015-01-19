@@ -46,16 +46,17 @@
   end
 
   private
-  def process_services(aux)
-    if aux.count == 1
-      results[0] = [aux.first]
-      results[1] = nil
-    elsif aux.count % 2 == 1
-      results = aux.each_slice(aux.count/2).to_a
-      results[0][results[0].count] = results[2][0]
-    else
-      results = aux.each_slice(aux.count/2).to_a
+    def process_services(aux)
+      results = []
+      if aux.count == 1
+        results[0] = [aux.first]
+        results[1] = nil
+      elsif aux.count % 2 == 1
+        results = aux.each_slice(aux.count/2).to_a
+        results[0][results[0].count] = results[2][0]
+      else
+        results = aux.each_slice(aux.count/2).to_a
+      end
+      results
     end
-    results
-  end
 end

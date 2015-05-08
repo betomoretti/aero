@@ -47,7 +47,8 @@ ready = (function() {
 		var paths = {
 			"Service" :      "/search/services",
 			"Program" :      "/search/circuits",
-			"OutputGroups" : "/search/output_groups"
+			"OutputGroups" : "/search/output_groups",
+			"Hotel" : "search/hotels"
 		} 
 		var value = this.value;
 

@@ -5,8 +5,17 @@ class UniqueController < ApplicationController
   def index
     render :layout => 'application'  
   end
-  
+
+  def search_hotels
+    p params
+    @form = SearchForm.new(word: params[:word],option_select: params[:option_select],id_search: params[:id_search],type_search: params[:type_search])
+    @uniques = @form.search_hotels
+    @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"
+  end  
+
+
   def search_circuits
+    p params
     @form = SearchForm.new(word: params[:word],option_select: params[:option_select],id_search: params[:id_search],type_search: params[:type_search])
     @uniques = @form.search_circuits
     @word = @uniques.count > 0 ? params[:word] : "No hay resultados para tu búsqueda"

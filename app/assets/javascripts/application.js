@@ -48,7 +48,7 @@ ready = (function() {
 			"Service" :      "/search/services",
 			"Program" :      "/search/circuits",
 			"OutputGroups" : "/search/output_groups",
-			"Hotel" : "search/hotels"
+			"Hotel" : "/search/hotels"
 		} 
 		var value = this.value;
 

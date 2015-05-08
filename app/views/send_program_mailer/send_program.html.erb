@@ -7,6 +7,7 @@
     <h2>Datos del circuito</h2>
 
 	<p><strong>Nombre:</strong> <%= @program.name %></p></br>
+  <p><%= @program.summary.html_safe %></p>  
 	<p><strong>Descripcion:</strong></p>
   <p><%= @program.description.html_safe %></p></br>
 	<p><strong>Tarifas:</strong></p>

@@ -2,18 +2,54 @@
   include ActiveModel::Model
   attr_accessor :word,:option_select, :id_search, :type_search
 
+# bùsqueda de circuitos no solo a traves de walking areas sino tmb del area que tiene asignado el program. Deberìa refactorizarse
+  def search_circuits_if_not_predictive
+      if Area.exists?(name: word) # Paìses y ciudades con el mismo nombre?
+        @programs_by_walking_area = Area.unique_programs_by_area_name(word) # se buscan los programas a traves de walking areas por su nombre
+        idArea = (Area.find_by name: word).id # se obtiene el id del area escrita en el search input
+        @programs_by_idArea = Program.uniques.where("area_id = ? and expiration_date > ?",idArea,Date.today) #Se buscan los programas que tienen como area_id al idArea
+      end
+      if Country.exists?(name: word)    # Paìses y ciudades con el mismo nombre?
+        @programs_by_walking_area = Country.unique_programs_by_country_name(word) #se buscan los paises a traves de walking areas por su nombre
+        pais = (Country.find_by name: word) # se busca el paìs por su nombre
+        areas = pais.areas.pluck(:id) # Se traen todas las areas posibles para ese paìs
+        @programs_by_idArea = Program.uniques.where(:area_id => areas).where("expiration_date > ?", Date.today) #Se buscan los programas que tienen como area_id dentro de los id de areas que tiene el país
+      end
+  end    
+
+  def search_circuits_if_predictive_selected
+        type = type_search.camelize.constantize #convierte el type_search en Model
+      @programs_by_walking_area = type.find(id_search).programs.where("programs.expiration_date > ?", Date.today)
+      if type_search == "Country"
+        pais = Country.find(id_search) #Se debe buscar el país correspondiente al paràmetro
+        areas = pais.areas.pluck(:id)  # Se traen todas las areas posibles para ese paìs
+        @programs_by_idArea = Program.uniques.where(:area_id => areas).where("expiration_date > ?", Date.today) #Se buscan los programas cuyo id_area es uno de las Areas del país
+      end  
+      if type_search == 'Area'
+        @programs_by_idArea = Program.uniques.where("area_id = ? and expiration_date > ?",id_search,Date.today) # Se buscan los programas que tengan id_area = id_search
+      end
+  end              
+
+
 
   def search_circuits
     return [] if word.blank?
-    if id_search.blank?
-      return Area.unique_programs_by_area_name(word)       if Area.exists?(name: word)
-      return Country.unique_programs_by_country_name(word) if Country.exists?(name: word)
-    else
-      type = type_search.camelize.constantize
-      return type.find(id_search).programs.where("programs.expiration_date > ?", Date.today).uniq.sort_by{|u| u[:nights]}
-    end
+    if id_search.blank? # Si no se selecciona el predictivo en la bùsqueda
+      self.search_circuits_if_not_predictive
+    else # Si se selecciona el predictivo en la bùsqueda
+      self.search_circuits_if_predictive_selected
+    end      
+      if @programs_by_walking_area #si està definido el idArea
+        programas = (@programs_by_walking_area + @programs_by_idArea).uniq  # Independientemente de cómo fue la búsqueda, estas son las variables que se usan y que se retornan.
+        programas.sort! { |program1,program2| program1.nights <=> program2.nights }
+        return programas
+      end  
     []
   end
+
+
+
+
 
   def search_services
     return [] if word.blank?

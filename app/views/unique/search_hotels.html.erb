@@ -1,0 +1,242 @@
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    // console.log("asdasda");
+       $('.head').backstretch([
+          "<%= asset_path 'cabeza_01.jpg' %>"
+        , "<%= asset_path 'cabeza_02.jpg' %>"
+        , "<%= asset_path 'cabeza_03.jpg' %>"
+      , "<%= asset_path 'cabeza_04.jpg' %>"
+      , "<%= asset_path 'cabeza_05.jpg' %>"
+      , "<%= asset_path 'cabeza_06.jpg' %>"
+      , "<%= asset_path 'cabeza_07.jpg' %>"
+      , "<%= asset_path 'cabeza_08.jpg' %>"
+      , "<%= asset_path 'cabeza_09.jpg' %>"
+      , "<%= asset_path 'cabeza_10.jpg' %>"
+      ], {duration: 3000, fade: 750});
+
+      $("#filter").keyup(function () {
+        $('div.rsltItem').each(function (index) {
+          if ($(this).attr('data-search').indexOf($("#filter").val().toLowerCase()) < 0) {
+            $(this).hide();
+          }
+        });
+        if ($(this).val() == '') {
+          $('div.rsltItem').show();
+        };
+      }); 
+  });
+
+</script>
+<header class="head bimg-04">
+           <%= render 'partials/search' %>
+
+    <h1><%= @word %></h1>   
+</header>
+
+<div class="content-wrapper">
+  <div class="rslt-wrapper">
+        <%# label_tag(:filter, "Filtrado por nombre") %>
+        <%# text_field_tag(:filter) %>
+  <!-- comienza lo que se tiene que repetir -->
+        <% @uniques.each do | unique | %>
+          <div class="rsltItem hotelItem">
+          <div class="infoCol">
+          <h2><%=unique.name%><div class="rank"><span class="star star-on"></span><span class="star star-on"></span><span class="star star-on"></span><span class="star"></span><span class="star"></span></div></h2>
+                    <div class="details">
+                            <h3 class="heading">STANDART</h3>
+                              <div class="content">
+                                <table>
+                                  <thead>
+                                      <tr>
+                                          <th>SGL</th>
+                                            <th>DBL</th>
+                                            <th>TPL</th>
+                                            <th>TAG RÉG AD RÉG</th>
+                                            <th>VIGENCIA</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                  <tbody>
+                                      <tr>
+                                          <td>79</td>
+                                            <td>79</td>
+                                            <td>103</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>77</td>
+                                            <td>77</td>
+                                            <td>123</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>87</td>
+                                            <td>87</td>
+                                            <td>123</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>90</td>
+                                            <td>90</td>
+                                            <td>138</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>34</td>
+                                            <td>34</td>
+                                            <td>187</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>57</td>
+                                            <td>57</td>
+                                            <td>120</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div><!-- /.content -->
+              
+                            <h3 class="heading">SUPERIOR</h3>
+              <div class="content">
+                              
+                                <table>
+                                  <thead>
+                                      <tr>
+                                          <th>SGL</th>
+                                            <th>DBL</th>
+                                            <th>TPL</th>
+                                            <th>TAG RÉG AD RÉG</th>
+                                            <th>VIGENCIA</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                  <tbody>
+                                      <tr>
+                                          <td>79</td>
+                                            <td>79</td>
+                                            <td>103</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>77</td>
+                                            <td>77</td>
+                                            <td>123</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>87</td>
+                                            <td>87</td>
+                                            <td>123</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>90</td>
+                                            <td>90</td>
+                                            <td>138</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>34</td>
+                                            <td>34</td>
+                                            <td>187</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>57</td>
+                                            <td>57</td>
+                                            <td>120</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div><!-- /.content -->
+                            
+                            <h3 class="heading">DELUXE</h3>
+              <div class="content">
+                              
+                                <table>
+                                  <thead>
+                                      <tr>
+                                          <th>SGL</th>
+                                            <th>DBL</th>
+                                            <th>TPL</th>
+                                            <th>TAG RÉG AD RÉG</th>
+                                            <th>VIGENCIA</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                  <tbody>
+                                      <tr>
+                                          <td>79</td>
+                                            <td>79</td>
+                                            <td>103</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>77</td>
+                                            <td>77</td>
+                                            <td>123</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>87</td>
+                                            <td>87</td>
+                                            <td>123</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>90</td>
+                                            <td>90</td>
+                                            <td>138</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>34</td>
+                                            <td>34</td>
+                                            <td>187</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                        <tr>
+                                          <td>57</td>
+                                            <td>57</td>
+                                            <td>120</td>
+                                            <td>DES</td>
+                                            <td>19/02/2015 - 01/04/2015</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div><!-- /.content -->
+                            <hr />
+                        <div class="footnotes">Tarifas no válidas para ﬁnes de semana largo</div>
+                          <hr />
+                          <div class="footnotes">(*) En las vigencias marcadas no plican las políticas de CHD</div>
+                          <hr />
+                    </div><!-- /.details -->
+                      
+                    </div><!-- /.infoCol -->
+
+        <% end %>
+        <!-- termina lo que se tiene que repetir -->
+     </div>
+</div>
